@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hphfarm.www.mapper.ExpMapper">
+
+	<!-- 전체 게시글가져오기 -->
+	<select id="selectExpList" resultType="com.hphfarm.www.dto.ExpDto">
+		<if test='searchword == null'>
+			<![CDATA[		
+			select * from 
+			(select rownum as rnum,a.* from
+			(select * from exp where e_appr='true' order by e_no desc)a) 
+			where rnum>=#{startrow} and rnum<=#{endrow}	
+			]]>
+		</if>
+ 		<if test="searchword != null">
+			<if test='category.equals("all")'>
+				<![CDATA[
+				select * from 
+				(select rownum as rnum,a.* from
+				(select * from exp
+				where e_name like '%'||#{searchword}||'%'
+				or e_details like '%'||#{searchword}||'%' and e_appr='true'
+				order by e_no desc)a) 
+				where rnum>=#{startrow} and rnum<=#{endrow}		
+				]]>	
+			</if>
+			<if test='category.equals("e_name") or category.equals("e_details")'>
+				<![CDATA[
+				select * from 
+				(select rownum as rnum,a.* from
+				(select * from exp		
+				where ${category} like '%'||#{searchword}||'%' and e_appr='true'
+				order by e_no desc) a) 
+				where rnum>=#{startrow} and rnum<=#{endrow}	
+				]]>	
+			</if>			
+		</if> 
+	</select>
+	<!-- 체험 프로그램 하단 넘버링하기 - 총 게시글 수 -->
+	<select id="selectExpListCount" resultType="int">
+		<if test='searchword == null'>
+			select count(*) from exp
+		</if>
+		<if test="searchword != null">
+			select count(*) from exp
+			<if test='category.equals("all")'>
+				where e_name like '%'||#{searchword}||'%'
+				or e_details like '%'||#{searchword}||'%'
+			</if>
+			<if test='category.equals("e_name") or category.equals("e_details")'>
+				where ${category} like '%'||#{searchword}||'%' 			
+			</if>
+		</if>
+	</select>
+
+	<!-- (농장주)체험등록 글쓰기 -->
+	<insert id="insertExp_RegWrite" >
+		insert into exp (e_no,e_details,e_startdate,e_enddate,e_keyword,e_appr,u_no,e_term,e_price,e_thumb,e_name,fr_no,e_regidate) 
+		values( 
+		exp_seq.nextval,
+		#{e_details},
+		#{e_startdate},
+		#{e_enddate},
+		#{e_keyword},
+		'false',
+		#{u_no},
+		#{e_term},
+		#{e_price},
+		#{e_thumb},
+		#{e_name},
+		(select f.fr_no from farmreg f,users u where f.u_no=u.u_no and u.u_no=#{u_no}),		
+		sysdate
+		)
+	</insert>
+ 	<!-- 체험 상세보기 뷰 -->
+	<select id="selectBoardOne" resultType="com.hphfarm.www.dto.ExpDto">
+		select * from exp e,users u,farmreg f
+		where e.e_no=#{e_no}
+		and u.u_no=f.u_no
+		and u.u_no=e.u_no			
+	</select>
+
+ <!-- 	
+ 	<resultMap id="expDtoMap" type="com.hphfarm.www.dto.ExpDto">
+ 		<result column="e_no" property="e_no"/>
+ 		<result column="e_details" property="e_details"/>
+ 		<result column="e_startdate" property="e_s tartdate"/>
+ 		<result column="e_enddate" property="e_enddate"/>
+ 		<result column="e_keyword" property="e_keyword"/>
+ 		<result column="e_appr" property="e_appr"/>
+ 		<result column="e_term" property="e_term"/>
+ 		<result column="e_price" property="e_price"/>
+ 		<result column="e_thumb" property="e_thumb"/>
+ 		<result column="e_name" property="e_name"/>
+ 		<result column="u_no" property="u_no"/>
+ 		<result column="f_no" property="f_no"/>
+ 	</resultMap>
+ 	<resultMap id="memberDtoMap" type="com.hphfarm.www.dto.MemberDto">
+ 		<result column="u_no" property="u_no"/>
+ 		<result column="u_id" property="u_id"/>
+ 		<result column="u_pw" property="u_pw"/>
+ 		<result column="u_name" property="u_name"/>
+ 		<result column="u_nickname" property="u_nickname"/>
+ 		<result column="u_phone" property="u_phone"/>
+ 		<result column="u_regno" property="u_regno"/>
+ 		<result column="u_email" property="u_email"/>
+ 		<result column="u_addr" property="u_addr"/>
+ 		<result column="u_infoway" property="u_infoway"/>
+ 		<result column="u_account" property="u_account"/>
+ 		<result column="u_bank" property="u_bank"/>
+ 		<result column="u_accountno" property="u_accountno"/>
+ 		<result column="uc_no" property="uc_no"/>
+ 	</resultMap>
+ 	<resultMap id="farmRegDtoMap" type="com.hphfarm.www.dto.FarmRegDto">
+ 	 	<result column="fr_no" property="fr_no"/>
+ 	 	<result column="fr_addr" property="fr_addr"/>
+ 	 	<result column="fr_name" property="fr_name"/>
+ 	 	<result column="fr_area" property="fr_area"/>
+ 	 	<result column="fr_block" property="fr_block"/>
+ 	 	<result column="fr_land" property="fr_land"/>
+ 	 	<result column="fr_appr" property="fr_appr"/>
+ 	 	<result column="u_no" property="u_no"/>
+ 	 	<result column="fr_startdate" property="fr_startdate"/>
+ 	 	<result column="fr_enddate" property="fr_enddate"/>
+ 	 	<result column="fr_view" property="fr_view"/>
+ 	 	<result column="fr_price" property="fr_price"/>
+ 	 	<result column="fr_unique" property="fr_unique"/>
+ 	 	<result column="fr_noplant" property="fr_noplant"/>
+ 	 	<result column="fr_service" property="fr_service"/>
+ 	 	<result column="fr_thumb" property="fr_thumb"/>
+
+ 	</resultMap>
+ 	<resultMap id="numberDtoMap" type="com.hphfarm.www.dto.NumberDto">
+ 	 	<result column="page" property="page"/>	
+ 	 	<result column="limit" property="limit"/>	
+ 	 	<result column="numlimit" property="numlimit"/>	
+ 	 	<result column="listcount" property="listcount"/>	
+ 	 	<result column="maxpage" property="maxpage"/>	
+ 	 	<result column="startpage" property="startpage"/>	
+ 	 	<result column="endpage" property="endpage"/>	
+ 	 	<result column="startrow" property="startrow"/>	
+ 	 	<result column="endrow" property="endrow"/>	
+ 	 	<result column="category" property="category"/>	
+ 	 	<result column="searchword" property="searchword"/>
+ 	</resultMap>
+ 	
+ 	<resultMap id="totalDtoMap" type="com.hphfarm.www.dto.TotalDto" >
+	  <collection property="expDto" resultMap="expDtoMap" />
+	  <collection property="memberDto" resultMap="memberDtoMap" />
+	  <collection property="farmRegDto" resultMap="farmRegDtoMap" />
+	  <collection property="numberDto" resultMap="numberDtoMap" />
+	</resultMap>
+	 -->
+
+</mapper>	

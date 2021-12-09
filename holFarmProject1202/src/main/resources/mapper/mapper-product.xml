@@ -1,0 +1,153 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hphfarm.www.mapper.ProductMapper">
+
+	<!-- 농기구 수 -->
+	<select id="productCategory1" resultType="int">
+		select count(*) from product where pc_no = 1
+	</select>
+	
+	<!-- 총 씨앗 수 -->
+	<select id="productCategory2" resultType="int">
+		select count(*) from product where pc_no = 2
+	</select>
+	
+	<!-- 총 모종 수 -->
+	<select id="productCategory3" resultType="int">
+		select count(*) from product where pc_no = 3
+	</select>
+	
+	<!-- 기타 수 -->
+	<select id="productCategory4" resultType="int">
+		select count(*) from product where pc_no = 4
+	</select>
+
+
+	<!-- 검색 결과 총 상품 리스트 -->
+	<select id="productList" resultType="com.hphfarm.www.dto.ProductDto">
+		<if test="category.equals('all')">
+			<if test='searchword == null'>
+				<if test="pc_no==0">
+					<![CDATA[
+						select * from(select rownum as rnum, a.* from (select * from product order by p_no desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+					]]>
+				</if>
+			</if>
+			<if test="searchword != null">
+				<if test="pc_no==0">
+					<![CDATA[
+						select * from(select rownum as rnum, a.* from (select * from product 
+						where p_info like '%'||#{searchword}||'%' or p_name like '%'||#{searchword}||'%' order by p_no desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+					]]>
+				</if>
+				<if test="pc_no==1">
+					<![CDATA[
+						select * from(select rownum as rnum, a.* from (select * from product 
+						where pc_no = #{pc_no} and (p_info like '%'||#{searchword}||'%' or p_name like '%'||#{searchword}||'%') order by p_no desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+					]]>
+				</if>
+				<if test="pc_no==2">
+					<![CDATA[
+						select * from(select rownum as rnum, a.* from (select * from product 
+						where pc_no = #{pc_no} and (p_info like '%'||#{searchword}||'%' or p_name like '%'||#{searchword}||'%') order by p_no desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+					]]>
+				</if>
+				<if test="pc_no==3">
+					<![CDATA[
+						select * from(select rownum as rnum, a.* from (select * from product 
+						where pc_no = #{pc_no} and (p_info like '%'||#{searchword}||'%' or p_name like '%'||#{searchword}||'%') order by p_no desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+					]]>
+				</if>
+				<if test="pc_no==4">
+					<![CDATA[
+						select * from(select rownum as rnum, a.* from (select * from product 
+						where pc_no = #{pc_no} and (p_info like '%'||#{searchword}||'%' or p_name like '%'||#{searchword}||'%') order by p_no desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+					]]>
+				</if>
+			</if>
+		</if>
+	</select><!-- 검색 결과 총 상품 리스트 -->
+
+	<!-- 검색 결과 총 상품 수 -->
+	<select id="selectListCount" resultType="int">
+		<if test="category.equals('all')">
+			<if test='searchword == null'>
+				<if test="pc_no==0">
+					select count(*) from product
+				</if>
+			</if>
+			<if test="searchword != null">
+				<if test="pc_no==0">
+					select count(*) from product where p_info like
+					'%'||#{searchword}||'%' or
+					p_name like '%'||#{searchword}||'%'
+				</if>
+				<if test="pc_no==1">
+					select count(*) from product where pc_no = #{pc_no} and
+					(p_info like
+					'%'||#{searchword}||'%' or p_name like
+					'%'||#{searchword}||'%')
+				</if>
+				<if test="pc_no==2">
+					select count(*) from product where pc_no = #{pc_no} and
+					(p_info like
+					'%'||#{searchword}||'%' or p_name like
+					'%'||#{searchword}||'%')
+				</if>
+				<if test="pc_no==3">
+					select count(*) from product where pc_no = #{pc_no} and
+					(p_info like
+					'%'||#{searchword}||'%' or p_name like
+					'%'||#{searchword}||'%')
+				</if>
+				<if test="pc_no==4">
+					select count(*) from product where pc_no = #{pc_no} and
+					(p_info like
+					'%'||#{searchword}||'%' or p_name like
+					'%'||#{searchword}||'%')
+				</if>
+			</if>
+		</if>
+	</select><!-- 검색 결과 총 상품 수 -->
+
+
+	<!-- 그 상품의 모든 댓글들 -->
+	<select id="selectPRAll" resultType="com.hphfarm.www.dto.ProductReviewDto">
+		select * from productreview where p_no = #{p_no} order by pr_no desc
+	</select>
+
+	<!-- 전체 댓글수 -->
+	<select id="selectPRlistCount" resultType="int">
+		select count(*) from productreview where p_no = #{p_no}
+	</select>
+	
+	<!-- 전체 댓글 평점 -->
+	<select id="selectPRstarAvg" resultType="int">
+		select round(avg(pr_grade),1) from productreview where p_no = #{p_no}
+	</select>
+
+	<!-- 댓글추가 -->
+	<insert id="ProductReviewWrite">
+		<selectKey resultType="int" keyProperty="pr_no" order="BEFORE">
+			select pr_seq.nextval from dual
+		</selectKey>
+		insert into productreview values(
+		#{pr_no},#{pr_grade},#{pr_nickname},sysdate,#{pr_content},#{p_no})
+	</insert>
+
+	<!-- 댓글1개 가져오기 -->
+	<select id="selectProductReviewOne" resultType="com.hphfarm.www.dto.ProductReviewDto">
+		select * from productreview where pr_no=#{pr_no}
+	</select>
+
+	<!-- 해당 사용자의 모든 거래 물품 번호 -->
+	<select id="selectPno1" resultType="int">
+		select p_no from purchaselist 
+		where pl_status = 3 and py_no in (select py_no
+		from pay where u_no = #{sessionuno})
+	</select>
+
+</mapper>	
+	

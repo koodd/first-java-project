@@ -1,0 +1,136 @@
+h2 {text-align: center;
+  font-weight: 900;
+}
+#searchWord{
+  margin-bottom: 1px;
+}
+.wrapper #search{
+    float:right;
+    height: 30px;
+}
+.wrapper .exp_reg{
+    float: left;
+    border: none;
+    font-size: 30px;
+    background-color: #538F6A;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.wrapper .exp_reg:hover{
+  background-color: #AEBD77;
+}
+.wrapper #category{
+    font-size: 22px;
+}
+.wrapper #search .searchbtn {
+  border: none;
+  font-size: 19px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  background-color: #538F6A;
+}
+.wrapper #search .searchbtn:hover{
+  color: white;
+  background-color: #AEBD77;
+}
+.e_name {
+    padding-top: 100px;
+}
+.exp_ListPost p{
+    padding-top: 20px;
+    font-size: 20px;
+}
+.exp_ListPost .bottom_left{
+    float: left;
+}
+.exp_ListPost .bottom_right{
+    float:right;
+}
+.exp_ListPost .bottom_list {
+    height: 25px;
+}
+
+
+.page-num {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .page-num li {
+    width: 36px;
+    height: 35px;
+    padding: 0;
+  
+  }
+  
+  .first {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_first.png) no-repeat;
+  }
+  
+  .prev {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_prev.png) no-repeat;
+  }
+  
+  .num {
+    position: relative;
+    top: -16px;
+    height: 33px !important;
+    border: 1px #989898 solid;
+  }
+  
+  .num > div {
+    position: relative;
+    top: 2px;
+  }
+  
+  .next {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_next.png) no-repeat;
+  }
+  
+  .last {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_last.png) no-repeat;
+  }
+  
+  li {
+    display: inline-block;
+    padding-right: 5px;
+  }
+
+  a{text-decoration: none;}
+
+.exp_BookList_table {
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.exp_BookList_table .exp_Bookthead{
+    font-size: 20px;
+    border-top: 3px solid black;
+    border-bottom: 2px solid black;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #f2f2f2;
+}
+.exp_BookList_table .exp_Bookthead td{
+    color: black;
+}
+.exp_BookList_table .exp_Booktbody tr{
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+.exp_BookList_table .exp_Booktbody th{
+    color: black;
+}
+.managerBtn{
+  font-size: 15px;
+  border: none;
+  background-color: gray;
+}

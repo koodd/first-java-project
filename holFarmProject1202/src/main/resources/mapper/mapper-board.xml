@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.hphfarm.www.mapper.BoardMapper">
+ 
+  <!-- 공지사항 전체게시글 가져오기 -->
+	<select id="selectNoticeBoardList" resultType="com.hphfarm.www.dto.BoardDto">
+	
+		<if test='searchword == null'>
+			<![CDATA[
+			select * from 
+			(select rownum as rnum,a.* from 
+	        (select * from boardnotice where bn_category=1 order by bn_no desc
+	      	) a) 
+	        where rnum>=#{startrow} and rnum<=#{endrow}
+			]]>
+		
+
+		</if>
+		<if test="searchword != null">
+			<if test='category.equals("bn_title")'>
+				<![CDATA[
+				select * from 
+				(select rownum as rnum,a.* from 
+		        (select * from boardnotice 
+		        where bn_title like '%'||#{searchword}||'%' and bn_category=1
+		   order by bn_no desc) a) 
+		        where rnum>=#{startrow} and rnum<=#{endrow} 
+				]]>
+			</if>
+			<if test='category.equals("bn_content")'>
+				<![CDATA[
+		        select * from 
+				(select rownum as rnum,a.* from 
+		        (select * from boardnotice
+		        where bn_content like '%'||#{searchword}||'%' and bn_category=1
+		       order by bn_no desc ) a) 
+		        where rnum>=#{startrow} and rnum<=#{endrow}
+				]]>
+			</if>
+		</if>
+	</select>
+	<select id="selectPublicListCount" resultType="int">
+		<if test="searchword == null">
+		   select count(*) from boardnotice where bn_category=1
+		</if>
+		<if test="searchword != null">
+				select count(*) from boardnotice
+			<if test='category.equals("bn_title")'>
+				where bn_title like '%'||#{searchword}||'%'		
+				and bn_category=1		
+			</if>
+			<if test='category.equals("bn_content")'>
+				where bn_content like '%'||#{searchword}||'%'
+				and bn_category=1
+			</if>
+		</if>
+	</select>
+		
+		
+		<!--공지 게시글 view  -->
+		<select id="boardNoticeOne" resultType="com.hphfarm.www.dto.BoardDto">
+			select*from boardnotice where bn_no=#{bn_no} and bn_category=1
+		
+		</select>
+		  <!-- 공지 게시글 1개 가져오기 : preview -->
+	<select id="boardNoticeOnePre" resultType="com.hphfarm.www.dto.BoardDto">
+	
+		select * from 
+		(select rownum as rnum,a.* from 
+		(select * from boardNotice where bn_category=1
+		order by bn_no desc) a) 
+		where rnum = 
+		(select rnum from 
+		(select rownum as rnum,a.* from 
+		(select * from boardNotice where bn_category=1
+		order by bn_no desc) a) 
+		where bn_no=#{bn_no})-1
+		
+	</select>
+    <!-- 공지 게시글 1개 가져오기 : next -->
+	<select id="boardNoticeOneNext" resultType="com.hphfarm.www.dto.BoardDto">
+		
+	
+		select * from 
+		(select rownum as rnum, a.* from 
+		(select * from boardNotice where bn_category=1
+		order by bn_no desc) a) 
+		where rnum = 
+		(select rnum from 
+		(select rownum as rnum, a.* from 
+		(select * from boardNotice where bn_category=1
+		order by bn_no desc) a) 
+		where bn_no=#{bn_no})+1
+	
+	</select>
+	<!-- 공지사항 조회수 1증가 -->
+	<update id="updateBoardHit">
+	    update boardNotice set bn_hit=bn_hit+1 where bn_no=#{bn_no}
+	</update>
+	
+	<!--공지사항 게시글 삭제  -->	
+	<delete id="delete_man_public_board">
+		delete boardnotice where bn_no=#{bn_no}
+	</delete>
+	<!--공지사항 수정  -->
+	
+	<update id="update_board_public_modify">
+	    update boardnotice set bn_title=#{bn_title},bn_content=#{bn_content},
+	    bn_upload=#{bn_upload} where bn_no=#{bn_no}
+	</update>
+	
+	
+	<!--게시글 작성  -->
+	<insert id="insert_board_public_Write">
+		insert into	boardnotice values(
+		bn_seq.nextval,#{bn_title},#{bn_content},sysdate,0,#{bn_upload}
+		)	
+	</insert>
+	
+	<!--///////////////////////////////////////////////////////////////////////////////  -->
+	<!--///////////////////////////////////////////////////////////////////////////////  -->
+	<!--유저 게시글 작성-->
+		
+	<insert id="insert_board_User_Write">
+		insert into boardtotal values(bt_seq.nextval,#{bt_title},#{bt_content},
+		sysdate,0,bt_seq.currval,0,0,#{bc_no},0,#{u_no},#{bt_upload})
+		
+	</insert>
+		<!-- 유저 댓글 관련  -->
+		
+	
+
+
+	<!-- 정보게시판 목록 뽑기 -->
+	<select id="selectInfoList" resultType="BoardDto">
+		select * from BOARDNOTICE where bn_category=2
+	</select>
+
+</mapper>

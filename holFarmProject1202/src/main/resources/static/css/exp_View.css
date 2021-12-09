@@ -1,0 +1,67 @@
+h2{
+    font-weight: 900;
+}
+.exp_viwe_topbox{
+    padding-top: 30px;
+    height: 550px;
+}
+.exp_viwe_topbox .exp_view_leftbox .img_box img{
+    width: 550px;
+    height: 400px;
+}
+.exp_viwe_topbox .exp_view_leftbox {
+    float: left;
+}
+.exp_viwe_topbox .exp_view_rightbox{
+    padding-left: 50px;
+    float: left;
+    width: 600px;
+}
+.exp_viwe_topbox .exp_view_rightbox .right_box_info{
+    height: 100px;
+}
+.exp_viwe_topbox .exp_view_rightbox .right_box_info th{
+    border-bottom: 1px solid silver;
+    font-size: 20px;
+    margin: 10px;
+}
+.exp_viwe_topbox .exp_view_rightbox .right_box_info .bordertop{
+    border-top: 2px solid black;
+
+}
+.exp_viwe_topbox .exp_view_rightbox .exp_view_rightbox_bottom{
+    padding-top: 30px;
+    font-size: 20px;
+}
+.exp_viwe_topbox .exp_view_rightbox .exp_view_rightbox_bottom .button_box{
+    border: none;
+}
+/* .exp_viwe_topbox .exp_view_rightbox .exp_view_rightbox_bottom .button_box .sdate{
+    margin-bottom: 100px;
+} */
+.reg_btn_wrap{
+    padding-top: 20px;
+}
+.reg_btn_wrap .reg_btn{
+    border: none;
+    padding: 22px 60px 22px 60px;
+    background-color: #538F6A;
+    float: right;
+    font-size: 25px;
+    color: white;
+}
+.reg_btn_wrap .reg_btn:hover{
+    background-color: #AEBD77;
+    color: white;
+}
+.exp_view_bottombox .exp_view_bottombox_info .sub_each{
+    color: black;
+    padding-top: 10px;
+}
+.exp_view_bottombox .exp_view_bottombox_info .sub_each .sub_tit1{
+    padding-bottom: 15px;
+}
+
+.sdate{
+    margin-bottom: 10px;
+}

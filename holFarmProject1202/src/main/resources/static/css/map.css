@@ -1,0 +1,62 @@
+#canvas {float:left; position:relative; width: 320px; height:400px; margin: 0}
+#canvas h2 a:link{color: white;}
+#south {width: 320px; height:400px; position: absolute; top: 0px; left: 0;}
+#canvas h2{ padding:0; margin:0; font-size:12px; }
+
+#seoul, #gygg, #incheon, #gangwon, #chungbuk, #chungnam, #daejeon, #sejong, #jeonbuk, #jeonnam, #gwangju, #gyeongbuk, #gyeongnam, #daegu, #busan, #ulsan, #jeju { display: none; position: absolute; height:16px; background-color:#000; color:#fff; padding:2px 5px; text-align:center;}
+
+#seoul{ left:80px; top:75px; }
+#gygg{ left:80px; top:45px; }
+#incheon{ left:60px; top:75px; }
+#gangwon{ left:150px; top:45px; }
+#chungbuk{ left:120px; top:145px; }
+#chungnam{ left:60px; top:165px; }
+#daejeon{ left:80px; top:165px; }
+#sejong{ left:70px; top:145px; }
+#jeonbuk{ left:60px; top:205px; }
+#jeonnam{ left:60px; top:260px; }
+#gwangju{ left:	60px; top:260px; }
+#gyeongbuk{ left:150px; top:165px; }
+#gyeongnam{ left:130px; top:240px; }
+#daegu{ left:170px; top:210px; }
+#busan{ left:190px; top:250px; }
+#ulsan{ left:200px; top:225px; }
+#jeju{ left:80px; top:340px; }
+
+.nav-tabs{width: 800px;}
+
+.tab-content tr,th,td {border: 1px solid silver;}
+.tab-content tr,td{border-left: hidden; border-right: hidden; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.tab-content table{text-align: center;}
+.tab-content >div {margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;}
+.tab-content .trth { height: 40px; vertical-align: middle;}
+.tab-content .trtd { height: 30px; vertical-align: middle;} 
+
+.mid_section{height: 550px; padding-top: 40px;}
+.koreamap{float: left; width: 300px; padding-top: 100px;}
+.mini_board{width: 800px; float: right;}
+.farm_list{position: absolute; padding-left: 27px;}
+
+.korea_weather{float: left; padding-left: 20px; padding-top: 420px;}
+.korea_weather >h2 {text-align: center; border-bottom: 2px solid silver; padding-bottom: 20px;}
+.korea_weather .weather_board {text-align: center;}
+.korea_weather .weather_board table,tr,td,th {border: none;}
+.korea_weather .weather_board td{
+    border-bottom: 2px solid silver;
+    vertical-align: top;
+    height: 30px;
+}
+.korea_weather .weather_board th{
+    border-bottom:  1px solid silver;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.site-blocks-cover{z-index: -1;}
+
+.section_title h1 {margin:0 auto;}
+
+.service_item_content h2,p{text-align: center;}
+
+.service_item_title img{padding-bottom: 20px; padding-top: 150px;}
+

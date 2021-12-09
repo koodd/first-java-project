@@ -1,0 +1,48 @@
+h2{font-weight: 900;}
+.h3{font-weight: bold; padding-bottom: 40px;}
+.exp_Book_table{
+    font-size: 25px;
+}
+.exp_Book_table tr td,th{
+    color: black;
+}
+table .exp_Book_td{
+    padding-right: 70px;
+    padding-bottom: 10px;
+}
+.exp_BookList_table {
+    width: 1200px;
+    margin: 0 auto;
+}
+.exp_BookList_table .exp_Bookthead{
+    font-size: 20px;
+    border-top: 3px solid black;
+    border-bottom: 2px solid black;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #AEBD77;
+}
+.exp_BookList_table .exp_Bookthead td{
+    color: white;
+}
+.exp_BookList_table .exp_Booktbody tr{
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+}
+.exp_BookList_table .exp_Booktbody th{
+    color: black;
+}
+#cancelBtn{
+    border: none;
+    font-size: 20px;
+    color: snow;
+    background: #AEBD77;
+}
+#cancelBtn:hover{
+    color: black;
+}
+

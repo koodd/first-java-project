@@ -1,0 +1,82 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    -webkit-text-size-adjust:none;
+    list-style:none;
+    line-height:1;
+}
+
+
+a {color:#a7a7a7; text-decoration:none;}
+a:hover {color:#a7a7a7; text-decoration:none;}
+
+#customer{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+
+}
+.faqTab{width:100%; margin:40px 0 0 0; overflow:hidden;}
+.faqTab ul{width:100%; border-bottom:2px #5a524c solid; overflow:hidden;}
+.faqTab ul li{float:left; padding:0 5px 0 0;}
+.faqTab ul li a{display:block; width:163px; height:40px; line-height:40px; background:#ebebeb; font-weight:600; font-size:14px; text-align:center;}
+.faqTab ul li a span{color:#66BB6A;}
+.faqTab ul li a.on{background:#5a524c; color:#fff;}
+.faqTab ul li a.on span{color:#fff;}
+.faqTab ul li.last{padding:0;}
+.faqTab ul li.last a{width:166px;}
+
+.faqList{width:100%; border-bottom:1px #d9d9d9 solid; margin:16px 0 0 0; overflow:hidden;}
+.faqList ul li{position:relative; width:100%; border-top:1px #eaeaea solid; overflow:hidden;}
+.faqList ul li .question{width:100%; margin:4px 0; padding:10px 0; line-height:1.2; overflow:hidden;}
+.faqList ul li .question .blet{position:absolute; left:22px; top:14px; font-size:14px; font-weight:600; color:#666;}
+.faqList ul li .question .category{position:absolute; left:52px; top:14px; font-size:14px; font-weight:600; color:#666;}
+.faqList ul li .question .title{font-size:14px; font-weight:600; color:#666; margin:0 0 0 152px;}
+.faqList ul li.hover .question{background:#66BB6A;}
+.faqList ul li.hover .question .blet{color:#fff;}
+.faqList ul li.hover .question .category{color:#fff;}
+.faqList ul li.hover .question .title{color:#fff;}
+.faqList{width:100%; border-bottom:1px #d9d9d9 solid; margin:16px 0 0 0; overflow:hidden;}
+.faqList ul li{position:relative; width:100%; border-top:1px #eaeaea solid; overflow:hidden;}
+.faqList ul li .question{width:100%; margin:4px 0; padding:10px 0; line-height:1.2; overflow:hidden;}
+.faqList ul li .question .blet{position:absolute; left:22px; top:14px; font-size:14px; font-weight:600; color:#666;}
+.faqList ul li .question .category{position:absolute; left:52px; top:14px; font-size:14px; font-weight:600; color:#666;}
+.faqList ul li .question .title{font-size:14px; font-weight:600; color:#666; margin:0 0 0 152px;}
+.faqList ul li.hover .question{background:#66BB6A;}
+.faqList ul li.hover .question .blet{color:#fff;}
+.faqList ul li.hover .question .category{color:#fff;}
+.faqList ul li.hover .question .title{color:#fff;}
+
+.faqList ul li .question .blet{left:10px;}
+.faqList ul li .question .category{left:34px;}
+.faqList ul li .question .title{margin:0 0 0 100px;}
+.faqanswer .faqbox .blet{left:10px;}
+.faqanswer .faqbox .text{margin:0 0 0 12px;}
+
+.faqanswer{display:none; width:100%; background:#f9f9f9; overflow:hidden; clear:both;}
+.faqanswer .faqbox{position:relative; border-top:1px #eaeaea solid; padding:10px 20px 10px 22px;}
+.faqanswer .faqbox:after {content:""; display:block; clear:both;}
+.faqanswer .faqbox .blet{position:absolute; left:22pxrgb(255, 0, 0)1px; font-size:14px; font-weight:600; color:#66BB6A; line-height:1.4;}
+.faqanswer .faqbox .text{font-size:13px; color:#888; line-height:1.4; margin:0 0 0 31px;}
+.faqanswer .faqbox .text strong{color:#444;}
+
+.faqTab ul li a{width:143px;}
+.faqTab ul li.last a{width:145px;}
+
+.faqList ul li .question .blet{left:10px;}
+.faqList ul li .question .category{left:34px;}
+.faqList ul li .question .title{margin:0 0 0 100px;}
+.faqanswer .faqbox .blet{left:10px;}
+.faqanswer .faqbox .text{margin:0 0 0 12px;}
