@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="js/main1020_06.js"></script>
+		<script type="text/javascript">
+		   /* window.open("winpopup.html","pop1","directories=no,toolbar=no,menubar=no,resizable=no, scrollbars=no,width=300,height=400,top=250,left=500"); */
+		   var total = 0;
+		   var count = 0;
+		   var auto1;
+		   
+		   //증가시작함수
+		   function startBtn(){
+			  auto1 = setInterval(function(){
+				   count++;
+				   total += count;
+				   console.log("total : "+total);
+			   },2000);
+		   }
+		  
+		   function endBtn(){
+			   clearInterval(auto1);
+			   console.log("auto1 멈춤");
+		   }
+		   
+		</script>
+	</head>
+	<body>
+	 <h2>자동증가 스위치</h2>
+	  <button type="button" onclick="startBtn()">증가시작</button>
+	  <button type="button" onclick="endBtn()">증가중지</button>
+	  
+	</body>
+</html>

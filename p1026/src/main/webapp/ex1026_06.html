@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>배열 객체</title>
+		<script type="text/javascript">
+		
+		var arr=["국어","영어","수학"];
+		//arr[0],arr[1],arr[2]
+		//1개 dto   
+		var txt1 ={
+				bid:1,
+				btitle:"게시글1",
+				bcontent:"내용입니다.",
+				bname:"홍길동",
+				bdate:"2021-10-26"
+		}
+		var txt2 ={
+				bid:2,
+				btitle:"게시글2",
+				bcontent:"내용입니다2",
+				bname:"이순신",
+				bdate:"2021-10-26"
+		}
+		
+		var arr2=[
+			{   bid:3,   //arr2[0].bid
+			btitle:"게시글3",
+			bcontent:"내용입니다3",
+			bname:"이순신",
+			bdate:"2021-10-26"     
+		},
+		{   bid:4,   //arr2[1].bid
+			btitle:"게시글3",
+			bcontent:"내용입니다3",
+			bname:"이순신",
+			bdate:"2021-10-26"     
+		}
+		];
+		
+		//ArrayList
+		var list = [
+				{
+					bid:1,     //list[0].bid
+					btitle:"게시글1",
+					bcontent:"내용입니다.",
+					bname:"홍길동",
+					bdate:"2021-10-26"
+			},
+				{
+					bid:2,
+					btitle:"게시글2",
+					bcontent:"내용입니다2",
+					bname:"이순신",
+					bdate:"2021-10-26"
+			},
+			   arr2
+		];
+		
+		
+		document.write("arr2배열객체 : "+arr2[1].bid+"<br>");
+		document.write("arr2배열객체 : "+list[2][1].bid+"<br>");
+		document.write("list배열객체 : "+list[0].bid+"<br>");
+		document.write(list[0].btitle+"<br>");
+		document.write(list[0].bcontent+"<br>");
+		document.write(list[0].bname+"<br>");
+		document.write(list[0].bdate+"<br>");
+		document.write("<br>");
+		document.write("<br>");
+		document.write(txt1.bid+"<br>");
+		document.write(txt1.btitle+"<br>");
+		document.write(txt1.bcontent+"<br>");
+		document.write(txt1.bname+"<br>");
+		document.write(txt1.bdate+"<br>");
+		
+		
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

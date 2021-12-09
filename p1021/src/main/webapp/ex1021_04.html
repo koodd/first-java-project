@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+		  div{border:1px solid black;}
+		</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		  $(function(){
+			  $("#iBtn").click(function(){
+				  var sName = $("#siteName").val();
+				  // 자바스크립트: document.getElementById("siteName").value
+				  var sUrl = $("#siteUrl").val();
+				  //$("#siteName").attr("name"); 속성값을 가져올때
+				  // 
+				  $("#d01").prepend("<p><a href='"+sUrl+"'>"+sName+"</a></p>");
+				  //html->기존모두삭제후 html소스추가, append->뒤에 추가, prepend->앞에 추가
+				  //$("div>p").text(sName+":"+sUrl); 글자를 입력함
+			  });
+		  });
+		</script>
+	</head>
+	<body>
+	   <form action="">
+	     <label>사이트이름</label>
+	     <input type="text" id="siteName" name="siteName"><br>
+	     <label>사이트주소</label>
+	     <input type="text" id="siteUrl" name="siteUrl"><br>
+	     <button type="button" id="iBtn">저장</button>
+	      
+	   </form>
+	   <h2>링크 모음</h2>
+	   <div id="d01">
+	      <p><a href="http://www.naver.com">네이버</a></p>
+	   </div>
+	   <p>여기도 p</p>
+	
+	</body>
+</html>

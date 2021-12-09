@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+			  //생일 년도 추가
+			  var chtml="";
+			  var nowDate = new Date();
+			  var nowYear = nowDate.getFullYear();
+			  var nowMonth = nowDate.getMonth();
+			  var nowday = nowDate.getDate();
+			  for(var i=1940;i<=nowYear;i++){
+				  if(i!=nowYear){
+				    chtml +="<option value='"+i+"'>"+i+"년</option>";
+				  }else{  //2021==2021
+				    chtml +="<option value='"+i+"' selected>"+i+"년</option>";
+				  }
+			  }
+			  $("#birthYear").html(chtml);
+			  //월
+			  chtml="";  //초기화
+			  for(var i=1;i<=12;i++){
+				  if(i!=(nowMonth+1)){
+				    chtml +="<option value='"+i+"'>"+i+"월</option>";
+				  }else{  //2021==2021
+				    chtml +="<option value='"+i+"' selected>"+i+"월</option>";
+				  }
+				  
+			  }
+			  $("#birthMonth").html(chtml);
+			  //일
+			  chtml="";  //초기화
+			  for(var i=1;i<=31;i++){
+				  if(i!=nowday){
+				    chtml +="<option value='"+i+"'>"+i+"일</option>";
+				  }else{  //2021==2021
+				    chtml +="<option value='"+i+"' selected>"+i+"일</option>";
+				  }
+			  }
+			  $("#birthDay").html(chtml);
+			  
+			  
+			  
+			  $("#email3").change(function(){
+				  //alert("email3 jquery : " + $(this).val());
+				  if($(this).val()==1){
+					  $("#email2").val("");
+					  $("#email2").attr("readonly",false);
+					  $("#email2").focus();
+				  }else{
+					  $("#email2").val($(this).val());
+					  $("#email2").attr("readonly",true);
+				  }
+			  });
+		  });
+		</script>
+	</head>
+	<body>
+	  <h2>이메일 체크</h2>
+	  <form action="">
+	    <label>이메일</label><br>
+	    <input type="text" id="email1" name="email1">@
+	    <input type="text" id="email2" name="email2">
+	    <select id="email3" name="email3">
+	      <option value="1">::직접입력::</option>
+	      <option value="naver.com">naver.com</option>
+	      <option value="daum.net">daum.net</option>
+	      <option value="gmail.com">gmail.com</option>
+	    </select><br>
+	    <label>생년월일</label>
+	    <select id="birthYear" name="birthYear">
+	      <option value="1940">1940년</option>
+	    </select>년
+	    <select id="birthMonth" name="birthMonth">
+	      <option value="1">1월-12월</option>
+	    </select>월
+	    <select id="birthDay" name="birthDay">
+	      <option value="1">1일-31일</option>
+	    </select>일
+	    
+	  </form>
+	
+	</body>
+</html>

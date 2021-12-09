@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/notice_list.css">
+  <link rel="stylesheet" href="css/write.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+    	var checkNo=1;
+    	$(".updateBtn").click(function(){
+    		alert("업데이트 버튼클릭");
+    	});//.updateBtn
+    	
+    	$(".write").click(function(){
+    		var chtml="";
+    		var trid=checkNo;
+    		alert("trid : "+trid);
+    		chtml += '<tr id="'+trid+'">';
+    		chtml += '<td><input type="checkbox" name="bCheck" id="bCheck" value="'+trid+'"></td>';
+    		chtml += '<td><span class="table-notice">'+$("#bname").val()+'</span></td>';
+    		chtml += '<td class="table-title">';
+    		chtml += '<a>'+$("#btitle").val() +'</a>';
+    		chtml += '</td>';
+    		chtml += '<td><span onclick="updateBtn('+trid+')">수정</span></td>';
+    		chtml += '<td><span onclick="deleteBtn('+trid+')">삭제</span></td>';
+    		chtml += '</tr>';
+    		$("#tbodyContent").append(chtml);
+    		$("#bname").val("");
+    		$("#btitle").val("");
+    		alert("댓글이 저장되었습니다.");
+    		checkNo++;
+    	});
+    });//function
+    
+    //수정버튼 클릭
+    function updateBtn(u_id){
+    	alert("tr의 id값 : "+u_id);
+    	alert("tr전체 값 : "+$("#"+u_id).text());
+    	alert("tr td두번째 값 : "+$("#"+u_id).children().eq(1).text());
+    	alert("tr td세번째 값 : "+$("#"+u_id).children().eq(2).text());
+    	alert("tr td네번째 값 : "+$("#"+u_id).children().eq(3).text());
+    	alert("tr td다섯번째 값 : "+$("#"+u_id).children().eq(4).text());
+    	$("#bname").val($("#"+u_id).children().eq(1).text());
+    	$("#btitle").val($("#"+u_id).children().eq(2).text());
+    	
+    }
+    function deleteBtn(u_id){  //1
+    	alert("tr의 id값 : "+u_id);
+    	$("#"+u_id).remove();
+    	alert("삭제되었습니다.");
+    	
+    }
+  
+  </script>
+</head>
+<body>
+<section>
+    <h1>NOTICE</h1>
+    <div class="wrapper">
+       <form action="" name="write" method="post">
+      <table>
+        <colgroup>
+          <col width="15%">
+          <col width="85%">
+        </colgroup>
+        <tr>
+          <th>작성자</th>
+          <td>
+            <input type="text" name="bname" id="bname">
+          </td>
+        </tr>
+        <tr>
+          <th>내용</th>
+          <td>
+            <input type="text" name="btitle" id="btitle">
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <div id="button-wrapper">
+        <button type="button" class="write">작성완료</button>
+      </div>
+    </form>
+    </div>
+
+    <table>
+      <colgroup>
+        <col width="15%">
+        <col width="15%">
+        <col width="45%">
+        <col width="15%">
+        <col width="10%">
+      </colgroup>
+      <thead>
+      <!-- 제목부분 -->
+	      <tr>
+	        <th>체크</th>
+	        <th>작성자</th>
+	        <th>내용</th>
+	        <th>수정</th>
+	        <th>삭제</th>
+	      </tr>
+      </thead>
+      <tbody id="tbodyContent">
+	      
+          <!-- 내용부분 추가 -->
+      </tbody>
+    </table>
+
+    <ul class="page-num">
+      <li class="first"></li>
+      <li class="prev"></li>
+      <li class="num"><div>1</div></li>
+      <li class="next"></li>
+      <li class="last"></li>
+    </ul>
+  </section>
+
+</body>
+</html>

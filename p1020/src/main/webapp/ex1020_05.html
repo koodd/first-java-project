@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+		  table,th,td{border:1px solid black; border-collapse: collapse;}
+		</style>
+		<script type="text/javascript" src="js/main1020_07.js"></script>
+		
+	</head>
+	<body>
+	 <h2>count 정의값 출력</h2>
+	   <div id="d1">
+	     <table id="t1">
+	        <tr>
+	          <th>현재카운트값</th>
+	          <th>증감현황</th>
+	        </tr>
+	        <tbody id="ch01">
+	           
+	        </tbody> 
+	     </table>
+	   </div>
+	   <script type="text/javascript">
+
+	   var count=0;
+	    var chtml="";
+	   var ch_id = document.getElementById("ch01");
+
+	   function fBtn1(){
+		chtml="";   
+	   	count += 2;
+	   	console.log(count);
+	   	chtml +="<tr>";
+	   	chtml +="<td>"+count+"</td>";
+	   	chtml +="<td>+2 증가</td>";
+	   	chtml +="</tr>";
+	   	console.log(chtml);
+	   	ch_id.innerHTML += chtml;
+	   }
+	   function fBtn2(){
+		chtml="";  
+	   	count--;
+	   	console.log(count);
+	   	chtml +="<tr>";
+	   	chtml +="<td>"+count+"</td>";
+	   	chtml +="<td>-1 감소</td>";
+	   	chtml +="</tr>";
+	   	ch_id.innerHTML += chtml;
+	   }
+	   </script>
+	   <button type="button" onclick="fBtn1()">함수1(+2증가)</button>
+	   <button type="button" onclick="fBtn2()">함수2(-1감소)</button>
+	 
+	  
+	  
+	</body>
+</html>

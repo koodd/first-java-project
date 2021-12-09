@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="css/text">
+        .section .sec1 .span{background-color: grey;}
+    
+    
+    </style>
+
+
+</head>
+<body>
+
+    <section>
+        <div>모든정보는 필수 입력입니다.</div>
+
+        <div class="sec1">
+            <hr>
+
+            <span style="border-right: solid 1px blue;">
+
+                이메일(아이디)
+
+            </span>
+
+            
+
+            <input type="text">
+            @
+            <input type="text">
+            
+            <select name="email">
+                <option value="">직접입력</option>
+                <option value="naver">네이버</option>
+                <option value="daum">다음</option>
+                <option value="google">구글</option>
+            </select>
+
+            <button type="submit">중복확인</button>
+
+            <hr>
+
+
+            <span style="border-right: solid 1px blue;">
+
+                비밀번호
+
+                
+                
+                
+                
+            </span>
+            
+            <input type="password"> 8~12자리 영문과 숫자, 특수문자를 조합하여 입력해 주세요.
+
+
+            <span style="border-right: solid 1px blue;">
+
+                비밀번호 확인
+
+                
+                
+                
+                
+            </span>
+
+            <input type="password">
+
+            <hr>
+
+
+
+            <span style="border-right: solid 1px blue;">
+
+                소식지 수신여부
+
+                
+                
+                
+                
+            </span>
+
+            <input type="radio" name="receive" value="received"> 수신
+            <input type="radio" name="receive" value="noreceived"> 미수신
+
+
+
+
+
+        </div>
+
+
+        <br>
+
+
+
+        <div class="sec2">
+
+            부가입력사항 아래 사항을 입력하시면 로그인 시 맞춤형 메인화면을 이용할 수 있습니다.
+            <hr>
+            <span style="border-right: solid 2px blue;">
+
+                관심 연령
+
+                
+                
+                
+                
+            </span>
+
+            <select name="age">
+                <option value="">상관없음</option>
+                <option value="kid">어린이</option>
+                <option value="adult">어른</option>
+                <option value="old">노인</option>
+            </select>
+            <span style="border-right: solid 2px blue;">
+
+                성별
+
+                
+                
+                
+                
+            </span>
+
+            선택안함
+            <input type="radio" name="gender" value="no1"> 
+
+            남자
+            <input type="radio" name="gender" value="male"> 
+
+            여자
+            <input type="radio" name="gender" value="female">
+            <hr>
+
+
+            <span style="border-right: solid 2px blue;">
+
+                결혼여부
+
+                
+                
+                
+                
+            </span>
+
+
+            선택안함
+            <input type="radio" name="marry" value="no2"> 
+
+            미혼
+            <input type="radio" name="marry" value="nomarry"> 
+
+            기혼
+            <input type="radio" name="marry" value="yesmarry">
+            
+
+            <span style="border-right: solid 2px blue;">
+
+                자녀여부
+
+                
+                
+                
+                
+            </span>
+
+            선택안함
+            <input type="radio" name="kids" value="no3"> 
+
+            없음
+            <input type="radio" name="kids" value="noexist"> 
+
+            있음
+            <input type="radio" name="kids" value="exist">
+            <hr>
+            <span style="border-right: solid 2px blue;">
+
+                직업
+
+                
+                
+                
+                
+            </span>
+
+            <select name="job">
+                <option value="">상관없음</option>
+                <option value="officer">회사원</option>
+                <option value="freelancer">프리랜서</option>
+                <option value="politic">정치인</option>
+            </select>
+
+
+
+
+        </div>
+
+        <br>
+        관심있는 주제를 체크해주세요 (최대 6개)
+        <hr>
+
+        <div class="sec3">
+
+            
+            <input type="checkbox" name="chk_interest" value="law">가정법률
+            <input type="checkbox" name="chk_interest" value="edu">아동 청소년 /교육
+            <input type="checkbox" name="chk_interest" value="rent">부동산/임대차
+            <input type="checkbox" name="chk_interest" value="money">금융/금전
+            <input type="checkbox" name="chk_interest" value="buss">사업
+            <input type="checkbox" name="chk_interest" value="making">창업
+
+
+
+        </div>
+        <hr>
+
+
+    </section>
+
+
+    
+</body>
+</html>

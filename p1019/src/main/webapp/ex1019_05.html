@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="js/main07.js"></script>
+	</head>
+	<body>
+	    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+			function checkBtn(){
+				alert("버튼 테스트중");
+				alert( $("#email1").val());
+				document.form1.data1.value = document.getElementById("email1").value;
+				//$("#data1").val($("#email1").val());
+			}
+			
+			function changeCheck(chValue){
+				if(chValue=='direct'){
+					document.getElementById("email2").value = "";
+					document.getElementById("email2").readOnly=false;
+				}else{
+					document.getElementById("email2").value = chValue;
+					document.getElementById("email2").readOnly=true;
+				}
+			}
+		</script>
+	  <form action="" name="form1" id="form1">
+	     <label>이메일주소</label><br>
+	     <input type="text" name="email1" id="email1">@
+	     <input type="text" name="email2" id="email2">
+	     <select id="selectList" onchange="changeCheck(this.value)">
+	        <option value="direct" selected >직접입력</option>
+	        <option value="naver.com">네이버</option>
+	        <option value="daum.net">다음</option>
+	        <option value="gmail.com">지메일</option>
+	        <option value="nate.com">네이트</option>
+	     </select><br>
+	     <label>email1의 데이터 값</label>
+	     <input type="text" name="data1" id="data1"><br>
+	     <input type="button" onclick="checkBtn()" value="전송">
+	  
+	  </form>  
+	
+	</body>
+</html>

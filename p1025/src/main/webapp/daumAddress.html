@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+			  
+		  });
+		</script>
+		<script>
+		    function zipSearch(){
+			    new daum.Postcode({
+			        oncomplete: function(data) {
+			            alert("다음에서 zonecode 받음 : "+data.zonecode);
+			            alert("다음에서 기본주소 받음 : "+data.address);
+			            $("#zipcode").val(data.zonecode);
+			            $("#zipcode").attr("readonly",true);
+			            $("#addr1").val(data.address);
+			            $("#addr1").attr("readonly",true);
+			            $("#addr2").focus();
+			        }
+			    }).open();
+		    }
+		</script>
+	</head>
+	<body>
+	  <h2>다음주소 api</h2>
+	  <form>
+	    <label>우편번호</label>
+	    <input type="text" id="zipcode" name="zipcode">
+	    <button type="button" onclick="zipSearch()">우편번호검색</button><br>
+	    <label>주소</label><br>
+	    <input type="text" id="addr1" name="addr1">
+	    <label>상세주소 : </label><input type="text" id="addr2" name="addr2"><br>
+	    <label>영문주소</label><br>
+	    <input type="text" id="engaddr1" name="engaddr1"><br>
+	    <label>영문도로명주소</label><br>
+	    <input type="text" id="engroadaddr1" name="engroadaddr1"><br>
+	    <label>입력한 검색어</label><br>
+	    <input type="text" id="inputQuery" name="inputQuery"><br>
+	    
+	  </form>
+	  
+	
+	</body>
+</html>

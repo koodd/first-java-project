@@ -1,0 +1,41 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.ex.mapper.ChartMapper">
+    <!-- chart 전체 가져오기 -->
+	<select id="selectChartIncome" resultType="com.site.ex.dto.ChartDto">
+		select * from income
+	</select>
+	
+	<select id="selectTestList" resultMap="totalDtoMap">
+		select * from board a,member b where a.bname=b.name and a.bname='홍길동' 
+	</select>
+	
+	<resultMap id="boardDtoMap" type="com.site.ex.dto.BoardDto" >
+	  <result column="bid" property="bid" />
+	  <result column="bname" property="bname" />
+	  <result column="btitle" property="btitle" />
+	  <result column="bcontent" property="bcontent" />
+	  <result column="bdate" property="bdate" />
+	  <result column="bhit" property="bhit" />
+	  <result column="bgroup" property="bgroup" />
+	  <result column="bstep" property="bstep" />
+	  <result column="bindent" property="bindent" />
+	  <result column="bupload" property="bupload" />
+	</resultMap>
+	
+	<resultMap id="memberDtoMap" type="com.site.ex.dto.MemberDto" >
+	  <result column="id" property="id" />
+	  <result column="pw" property="pw" />
+	  <result column="name" property="name" />
+	  <result column="email" property="email" />
+	  <result column="hobby" property="hobby" />
+	</resultMap>
+	
+	<resultMap id="totalDtoMap" type="com.site.ex.dto.TotalDto" >
+	  <collection property="boardDto" resultMap="boardDtoMap" />
+	  <collection property="memberDto" resultMap="memberDtoMap" />
+	</resultMap>
+</mapper>	
+	

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+		  div{ border:1px solid black;}
+		  img{width:300px;}
+		</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		  $(function(){
+			  $(".cbtn01").click(function(){
+				  $("#mainImg").attr("src","images/m02.jpg");
+				  $("#mainImg").attr("alt","문별사진2");
+				  var className = $(".cbtn01").attr("class");
+				  $("span").text(className);
+			  });
+			  
+			  $(".cbtn02").click(function(){
+				 //src속성 값을 변경
+				 $("#mainImg").attr("src","images/m01.jpg"); 
+				 $("#mainImg").attr("alt","문별사진1");
+				 //html 글자 넣기
+				 $("span").text($(".cbtn02").attr("class"));
+			  });
+			  
+			  $("#mainImg").click(function(){
+				  //src속성값 가져오기
+				  var imgUrl = $("#mainImg").attr("src");
+				  //form input값 넣기
+				  $("#imageUrl").val(imgUrl);
+			  });
+			  
+		  });
+		</script>
+	</head>
+	<body>
+	  <form>
+	    <label>이미지경로</label>
+	    <input type="text" id="imageUrl" name="imageUrl"><br>
+	  </form> 
+	
+	
+	  <div id="d01">
+	    <img id="mainImg" src="images/m01.jpg" alt="문별사진1">
+	  </div>
+	  <span></span>
+	  <br>
+	  <button class="cbtn01">이미지변경</button>
+	  <button class="cbtn02">이전이미지변경</button>
+	
+	</body>
+</html>

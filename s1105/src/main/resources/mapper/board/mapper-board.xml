@@ -1,0 +1,132 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.ex.mapper.BoardMapper">
+
+    <!-- 전체게시글 가져오기 -->
+	<select id="selectList" resultType="com.site.ex.dto.BoardDto">
+		<if test='searchWord == null or searchWord.equals("")'>
+			<![CDATA[
+			select * from 
+			(select rownum as rnum,a.* from 
+	        (select * from board 
+	        order by bgroup desc,bstep asc) a) 
+	        where rnum>=#{startrow} and rnum<=#{endrow}
+			]]>
+		</if>
+		<if test="searchWord != null">
+			<if test='category.equals("all")'>
+				<![CDATA[
+				select * from 
+				(select rownum as rnum,a.* from 
+		        (select * from board 
+		        where btitle like '%'||#{searchWord}||'%'
+		        or bcontent like '%'||#{searchWord}||'%'
+		        order by bgroup desc,bstep asc) a) 
+		        where rnum>=#{startrow} and rnum<=#{endrow}
+				]]>
+			</if>
+			<if test='category.equals("btitle") or category.equals("bcontent")'>
+				<![CDATA[
+		        select * from 
+				(select rownum as rnum,a.* from 
+		        (select * from board
+		        where ${category} like '%'||#{searchWord}||'%'
+		        order by bgroup desc,bstep asc) a) 
+		        where rnum>=#{startrow} and rnum<=#{endrow}
+				]]>
+			</if>
+		</if>
+	</select>
+    
+    <!-- 총게시글 수 -->
+	<select id="selectListCount" resultType="int">
+		<if test="searchWord == null">
+		   select count(*) from board
+		</if>
+		<if test="searchWord != null">
+				select count(*) from board
+			<if test='category.equals("all")'>
+				where btitle like '%'||#{searchWord}||'%'
+				or bcontent like '%'||#{searchWord}||'%'
+			</if>
+			<if test='category.equals("btitle") or category.equals("bcontent")'>
+				where ${category} like '%'||#{searchWord}||'%'
+			</if>
+		</if>
+	</select>
+	
+    <!-- 게시글 1개 가져오기 -->
+	<select id="selectBoardOne" resultType="com.site.ex.dto.BoardDto">
+		select * from board where bid=#{bid}
+	</select>
+    <!-- 게시글 1개 가져오기 : preview -->
+	<select id="selectBoardOnePre" resultType="com.site.ex.dto.BoardDto">
+		select * from 
+		(select rownum as rnum,a.* from 
+		(select * from board 
+		order by bgroup desc,bstep asc) a) 
+		where rnum = 
+		(select rnum from 
+		(select rownum as rnum,a.* from 
+		(select * from board 
+		order by bgroup desc,bstep asc) a) 
+		where bid=#{bid})-1
+	</select>
+    <!-- 게시글 1개 가져오기 : next -->
+	<select id="selectBoardOneNext" resultType="com.site.ex.dto.BoardDto">
+		select * from 
+		(select rownum as rnum,a.* from 
+		(select * from board 
+		order by bgroup desc,bstep asc) a) 
+		where rnum = 
+		(select rnum from 
+		(select rownum as rnum,a.* from 
+		(select * from board 
+		order by bgroup desc,bstep asc) a) 
+		where bid=#{bid})+1
+	</select>
+	
+	<!-- 조회수 1증가 -->
+	<update id="updateBhit">
+	    update board set bhit=bhit+1 where bid=#{bid}
+	</update>
+	
+	<!-- 게시글 1개 삭제하기 -->
+	<delete id="boardDelete" >
+	    delete board where bid=#{bid}
+	</delete>
+	
+	<!-- 게시글 1개 업데이트 -->
+	<update id="updateModify">
+	    update board set btitle=#{btitle},bcontent=#{bcontent},
+	    bupload=#{bupload} where bid=#{bid}
+	</update>
+	
+	<!-- 게시글 1개 저장하기 : 쓰기 -->
+	<insert id="insertWrite">
+	    insert into board values(
+	    b_seq.nextval,#{bname},#{btitle},#{bcontent},sysdate,
+	    0,b_seq.currval,0,0,#{bupload} 
+	    )
+	</insert>
+	
+	<!-- 답변달기추가 //부모게시글 아래 있는 답변글에 1씩 증가 -->
+	<update id="updateReplyPlus">
+	    update board set bstep=bstep+1
+	    where bgroup=#{bgroup} and bstep>#{bstep}
+	</update>
+	
+	<!-- 게시글 1개 저장하기 : 답변달기 -->
+	<insert id="insertReply">
+	    insert into board values(
+	    b_seq.nextval,#{bname},#{btitle},#{bcontent},sysdate,
+	    0,#{bgroup},#{bstep}+1,#{bindent}+1,#{bupload} 
+	    )
+	</insert>
+	
+    
+	
+</mapper>	
+	

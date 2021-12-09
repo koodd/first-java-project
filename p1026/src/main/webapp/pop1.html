@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>자식창</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+			  $("#receiveVal").val(opener.$("#p_input").val());
+			  
+			  $("#sendBtn").click(function(){
+				  alert("부모창으로 값 전달");
+				  opener.$("#s_input").val($("#sendVal").val());
+				  //화면 닫기
+				  window.close();
+			  });
+		  });
+		</script>
+	</head>
+	<body>
+	  <h2>팝업창</h2>
+	  <form>
+	    <label>부모창에서 전달받은 값 : </label>
+	    <input type="text" id="receiveVal" name="receiveVal">
+	    <br>
+	    <br>
+	    <label>부모창으로 데이터 보냄 : </label>
+	    <input type="text" id="sendVal" name="sendVal">
+	    <button type="button" id="sendBtn">부모창으로 값 전달</button>
+	    
+	  </form>
+	
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.ex.mapper.EventMapper">
+
+    <!-- eventBoard 전체 게시글 가져오기 -->
+	<select id="selectEventBoard" resultType="com.site.ex.dto.EventDto">
+		select * from eventBoard order by eventNo desc
+	</select>
+	
+    <!-- eventBoard 1개 게시글 가져오기 -->
+	<select id="selectEventOne" resultType="com.site.ex.dto.EventDto">
+		select * from eventBoard where eventNo=#{eventNo}
+	</select>
+
+
+    <!-- event게시글에 해당되는 하단댓글 가져오기 -->
+	<select id="selectCommmentList" resultType="com.site.ex.dto.CommentDto">
+		select * from cboard where bid=#{bid} order by cno desc
+	</select>
+	
+    <!-- 댓글개수 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from cboard where bid=#{bid}
+	</select>
+	
+    <!-- 댓글1개 가져오기 -->
+	<select id="selectCommentOne" resultType="com.site.ex.dto.CommentDto">
+		select * from cboard where cno=#{cno}
+	</select>
+	
+	<!-- 댓글추가 -->
+	<insert id="insertCommentWrite">
+	    <selectKey resultType="int" keyProperty="cno" order="BEFORE">
+	       select event_seq.nextval from dual
+	    </selectKey>
+	    insert into cboard values(
+		#{cno},#{bid},#{id},#{cpw},#{ccontent},sysdate
+		)
+	</insert>
+	
+	<!-- 댓글삭제 -->
+	<delete id="deleteComment">
+	   delete cboard where cno=#{cno}
+	</delete>
+	
+	<!-- 댓글 수정저장 -->
+	<update id="updateComment">
+	   update cboard set ccontent=#{ccontent},cdate=sysdate 
+	   where cno=#{cno}
+	</update>
+</mapper>	
+	

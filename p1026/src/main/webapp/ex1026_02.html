@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>부모창</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+			  $("#popBtn").click(function(){
+				 alert("버튼 클릭!");
+				 window.open("pop1.html","childpop","width=600,height=800,resizable=no,scrollbars=no");
+			  });
+		  });
+		</script>
+	</head>
+	<body>
+	<h2>부모창에서 자식창으로 데이터 값 넘기기</h2>
+	<form action="">
+	  <label>자식창 데이터 보낼값 : </label>
+	  <input type="text" id="p_input" name="p_input"><br>
+	  <button type="button" id="popBtn">값 전달</button>
+	  <br><br>
+	  <label>자식창에 전달받은 값 :</label>
+	  <input type="text" id="s_input" name="s_input"><br><br>
+	  
+	</form>
+
+	
+	</body>
+</html>

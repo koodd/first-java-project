@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+		  label{font-size: 20px; }
+		</style>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+		   //함수선언
+		   function formCheck(){
+			   //alert("입력값 : "+$("#age").val());
+			   //alert("입력길이 : "+ $("#age").val().length);
+			   console.log("입력값 : "+$("#age").val());
+			   console.log("입력길이 : "+ $("#age").val().length);
+			   
+			   if($("#age").val().length<=1){
+				   alert("두글자 이상 입력하셔야 합니다.");
+				   $("#age").focus();
+				   return false;
+			   }
+			   //form에 있는 submit페이지 이동
+			   document.form1.submit();
+			   
+		   } 
+		   //jQuery선언
+		   $(function(){
+			   
+		   });
+		   
+		</script>
+	</head>
+	<body>
+	  <h2>연령대 확인페이지</h2>
+	  <form action="./doRequest1.jsp" method="post" name="form1">
+	    <label>이름</label><br>
+	    <input type="text" id="name" name="name"><br>
+	    <label>태어난 년도를 입력하세요.</label><br>
+	    <input type="text" id="age" name="age"><br>
+	    <input type="button" onclick="formCheck()" value="전송">
+	  
+	  </form>
+	 
+	
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Jquery</title>
+		<style type="text/css">
+		   div{width:300px; height:300px; border:1px solid black;
+		   }
+		   
+		</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		  //제이쿼리
+		  $(function(){
+			  var bcolor=["pink","blue","green","red"];
+			  var i=0;
+			  var j=1;
+			  $("#btn01").click(function(){
+				 if(i>=4){ i=0; }
+				 i++; //1
+				 console.log(i);
+				 $("#d01").css("background",bcolor[i]);
+			  });
+			  
+			  $("#btn02").click(function(){
+				 if(i<=0){ i=4; }
+				 i--; //
+				 console.log(i);
+				 $("#d01").css("background",bcolor[i]); 
+			  }); 
+			  $("#btn03").click(function(){
+				 j++; //
+				 console.log(j);
+				 $("#d01").css("border-width",j+"px"); 
+			  }); 
+			  $("#btn04").click(function(){
+				 j--; //
+				 console.log(j);
+				 $("#d01").css("border-width",j+"px"); 
+			  }); 
+			  
+		  });//jquery
+		</script>
+	</head>
+	<body>
+	  <div id="d01"></div>
+	  <button id="btn01" >색상변경</button>
+	  <button id="btn02">이전색상변경</button>
+	  <button id="btn03">border 두께 증가</button>
+	  <button id="btn04">border 두께 감소</button>
+	
+	</body>
+</html>

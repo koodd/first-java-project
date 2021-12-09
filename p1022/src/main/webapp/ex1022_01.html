@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+		
+		</style>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+		  $(function(){
+			  $("#checkBtn").click(function(){
+				  var ch_length = $("input:checkbox[name=hobby]").length;
+				  console.log("hobby체크박스 개수 : "+ch_length);
+				  var chkd_length = $("input:checkbox[name=hobby]:checked").length;
+				  console.log("hobby가 체크된 개수 : "+ chkd_length);
+				  if(chkd_length<=0){
+					  alert("취미를 1개 이상 선택하셔야 합니다.");
+				  }
+				  
+				  $("input:checkbox[name=hobby]").each(function(){
+					  if(this.checked==true){
+						  alert("체크되어 있는 값 : "+$(this).val());
+					  }
+				  });
+				  
+				  
+			  });
+			  
+			  $("#saveBtn").click(function(){
+				 //배열반복
+				 $("input:checkbox[name=agree]").each(function(){
+					 if(this.checked==false){
+						 alert("체크되어 있지 않습니다. 체크하겠습니다.");
+						 alert("해당 값: "+$(this).val());
+						 this.checked=true;
+						 
+					 }
+				 });
+				  
+				  
+				  /* if($("input:checkbox[name=agree]").is(":checked")==true){
+				    alert("체크가 모두 되어 있습니다.");
+			     }else{
+			    	 alert("체크가 되어 있지 않습니다.");
+			     } */
+			  });
+			  
+			  
+		  });
+		</script>
+	</head>
+	<body>
+	  <form action="">
+	    <textarea rows="7" cols="20"></textarea><br>
+	    <input type="checkbox" name="agree" id="agree1" value="yes"><label for="agree1">1.동의합니다</label><br>
+	    <textarea rows="7" cols="20"></textarea><br>
+	    <input type="checkbox" name="agree" id="agree2" value="yes"><label for="agree2">2.동의합니다</label><br>
+	  
+	  
+	    <label>취미를 선택하세요.</label><br>
+	    <input type="checkbox" name="hobby" id="swim" value="swim"><label for="swim">수영</label> 
+	    <input type="checkbox" name="hobby" id="golf" value="golf"><label for="golf">골프</label> 
+	    <input type="checkbox" name="hobby" id="run" value="run"><label for="run">조깅</label> 
+	    <input type="checkbox" name="hobby" id="game" value="game"><label for="game">게임</label><br>
+	    <input type="button" id="checkBtn" value="취미확인"><br> 
+	    <input type="button" id="saveBtn" value="저장"><br> 
+	  </form>
+	
+	</body>
+</html>

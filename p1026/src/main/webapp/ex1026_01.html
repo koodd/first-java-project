@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		  $(function(){
+			  //1. 자동차 종류가 변경이 될때
+			  //2. value값을 읽어오기
+			  //3. 구매수량선택 부분에 개수만큼 for문을 실행
+			  $("#carType").change(function(){
+				 var chtml="";
+				 for(var i=1;i<=$(this).val();i++){
+					chtml += "<option value='"+i+"'>"+i+"</option>"; 
+				 }
+				 $("#carCount").html(chtml);
+			  });
+		  });
+		  
+		  //10분정도 걸림
+		</script>
+	</head>
+	<body>
+	<h2>쇼핑몰</h2>
+	<form>
+	  <label>자동차 종류</label>
+	  <select id="carType" name="carType">
+	    <option value="5">싼타페</option>
+	    <option value="10">투싼</option>
+	    <option value="3">코나</option>
+	    <option value="20">쏘나타</option>
+	    <option value="7">제너시스</option>
+	  </select>
+	  <span>구매수량선택</span>
+	  <select id="carCount" name="carCount">
+	    <option value="1">1</option>
+	  </select><span>개</span><br>
+	  
+	</form>
+	
+	</body>
+</html>
