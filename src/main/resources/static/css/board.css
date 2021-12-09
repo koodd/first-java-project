@@ -1,0 +1,573 @@
+
+
+/*검색 부분*/
+
+
+/*22  */
+.nav {position:relative; clear:both;}
+.s_search {border:1px solid #cccccc; width:380px; padding:5px 5px 5px 5px; height: 40px; margin:0 auto; margin: 30px auto; position:relative;}
+.s_search.s_search_btn {margin:5px 5px 5px 5px;}
+.s_search #search_box_type{margin:5px 5px 6px 5px;}
+.s_search.cancel {width:285px;}
+.s_search #searchKey, .s_search option {font-size:13px;}
+.s_search .s_down {background:url(../images/bg_select.gif) no-repeat 60px 3px;  float:left; cursor:pointer; }
+.s_search #search_box_type {width:80px;}
+.s_search.s_sch {border:1px solid white; height:30px; width: 210px; font-size:15px;}
+.s_search #search_box_type select {position: relative; bottom: 4px; width: 70px; height: 25px; text-align: center;}
+.mainimg{
+    width: 1200px ; height: 430px; margin: auto;
+}
+.mainimg img{
+    height: 400px; width: 1200px;
+}
+/* 22 */
+.p_message{
+   
+    margin: 4px 0px 0 0; font-size: 18px;
+}
+.boardnum{width: 10%;}
+.boardtitle{width: 58%;}
+.bardwriter{width:12%}
+.boarddate{width: 12%;}
+.boardhit{width: 8%;}
+
+.pboardnum{width: 10%;}
+.pboardtitle{width: 60%;}
+.pboarddate{width: 15%;}
+.pboardhit{width: 15%;}
+
+
+/*페이지 넘버*/
+
+.pageMove03{width:100%; height:15px; padding:37px 0 30px 0; margin:0 0 3px 0; clear:both;text-align:center; position:relative; z-index:-1; overflow:hidden;} 
+.pageNumber03 {margin:auto; vertical-align:middle;}
+.pageNumber03 li {display:inline-block; list-style:none;   height:18px;  }
+.pageNumber03 li.last { border-right:1px solid #ececec ; margin-right:6px}
+.pageNumber03 li .link_page {  padding:5px 9px 5px 9px; border:1px solid #fff}
+.pageNumber03 li .link_page:hover {  border:1px solid #e8e8e8;}
+.pageNumber03 li.btn_next img{ margin:0 4px 2px 3px;; vertical-align:middle }
+.pageNumber03 li.btn_prev img{margin-bottom:3px; vertical-align:middle }
+.pageNumber03 li a:link {color:#585858;font-size:12px;display:inline-block; padding:0; margin:0;  font-family:tahoma ;font-weight:bold; text-decoration:none;}
+.pageNumber03 li a:visited {color:#585858;font-size:12px;display:inline-block; padding:0; margin:0; font-family:tahoma ;font-weight:bold; text-decoration:none;}
+.pageNumber03 li a:active {color:#585858;font-size:12px;display:inline-block; padding:0; margin:0;  font-family:tahoma ;font-weight:bold; text-decoration:none;}
+.pageNumber03 li a:hover {color:#fe5542; font-size:12px;display:inline-block; padding:0; margin:0;  font-family:tahoma ;font-weight:bold; text-decoration:none;}
+.pageNumber03 li .current{display:inline-block; color:#fe5542; border:1px solid #e5e5e5; padding:5px 9px 5px 9px;}
+
+        	/*탭메뉴화면*/
+table.tabMenu{width:1200px;}
+table.tabMenu tr:last-child td{border-bottom: 1px solid #adb5bd;}
+table.tabMenu tr:last-child td.on{border-bottom: 1px solid transparent;}
+table.tabMenu td.on{border-left: 1px solid #adb5bd; border-right: 1px solid #adb5bd;}
+table.tabMenu td p{border-left: 1px solid #adb5bd;}
+table.tabMenu td:last-child p{border-right: 1px solid #adb5bd;}
+table.tabMenu td.on p{border: none;}
+table.tabMenu td.on + td p[data-border]{border-left: none;}
+table.tabMenu td.on ~ td p{border-left: none; border-right: 1px solid #adb5bd;}
+table.tabMenu td.on{/*border-left:1px solid #adb5bd;border-right:1px solid #adb5bd;*/}
+/*div.wid1200{position:absolute; width:1200px; height:5px; bottom:-2.5px; left:50%; margin-left:-600px; z-index:100;}
+span.whiteBar50{position:absolute; bottom:0; left:0; width:49.9%; height:5px; background-color:#fff;z-index:102;}
+span.whiteBar400{position:absolute; bottom:0; left:0; width:400px; height:5px; background-color:#fff;z-index:103;}*/
+/*게시판-리스트*/
+    /*--공통--*/
+    /*게시판*/
+
+        div#boardArea{width:100%; position:relative; overflow:hidden; }
+
+        section.b_table{width:100%; position:relative; overflow:hidden; display:table; table-layout: fixed; border-top:5px solid #adb5bd; border-bottom:5px solid #adb5bd;}
+        div.b_tr{position:relative;overflow:hidden;display:table-row; }
+        div.b_th,div.b_td{display:table-cell; text-align:center; vertical-align:middle; text-overflow:ellipsis;}
+        
+
+
+        div.b_th{background-color:#f5f7f9;}
+        div.b_td{border-top:1px solid #adb5bd;}
+        div.b_td a{color:#666;}
+        div.b_td a:hover{color:#adb5bd; text-decoration: none;}
+        div.b_title{text-align:left; overflow:hidden; line-height: 3;}
+  
+        .board_btn{
+            width: 1200px; margin: 0 auto;
+            overflow: hidden;
+            
+        }
+        #user_write_btn{
+            
+            margin-top: 20px;
+            float: right;
+        }
+
+    *--탭메뉴--*/
+section#tabMenuArea{width:100%; position:relative; margin:0 auto; /* border-bottom:1px solid #adb5bd; */ box-sizing:border-box;}
+table.tabMenu{position:relative; margin:0 auto;}
+table.tabMenu td{position:relative; overflow:hidden; font-size:16px; height:80px;vertical-align:middle; box-sizing:border-box;}
+table.tabMenu td a{display:block; width:100%; /*border-left:0.5px solid #adb5bd; border-right:0.5px solid #adb5bd;*/ color:#adb5bd; text-align:center; font-weight:700;}
+	table.tabMenu td a:hover{color:#666;}
+table.tabMenu td.on a{color:#666;}
+/*--하단 일반 텍스트박스---*/
+section#contentArea{clear:both;position:relative; margin:0 auto; /*overflow:hidden;*/ box-sizing:border-box; /*padding:30px 30px 60px 30px;*/}
+	/*--타이틀--*/
+	div.contentTitle{font-weight:700; padding-bottom:10px; border-bottom:1px solid #adb5bd;}
+	    div.contentTitle p{line-height: 1.5;}
+		div.contentTitle p span{font-size:14px; padding-left:10px; font-weight:400;}
+		div.contentTitle span.top_span{display: inline-block; font-size:18px; font-weight:bold; color: #adb5bd; margin-bottom: 10px;}
+		div.contentTitle span.bottom_span{display: inline-block; font-size:16px; font-weight:300; color: #666; margin: 15px auto 10px;}
+		div.contentTitle.rel a.abs{right: 0; bottom: 20px;}
+
+    table.tabMenu td.on ~ td p{border-left: none; border-right: 1px solid #adb5bd;}
+table.tabMenu td.on{/*border-left:1px solid #adb5bd;border-right:1px solid #adb5bd;*/}
+/*div.wid1200{position:absolute; width:1200px; height:5px; bottom:-2.5px; left:50%; margin-left:-600px; z-index:100;}
+span.whiteBar50{position:absolute; bottom:0; left:0; width:49.9%; height:5px; background-color:#fff;z-index:102;}
+span.whiteBar400{position:absolute; bottom:0; left:0; width:400px; height:5px; background-color:#fff;z-index:103;}*/
+
+/*하단일반 텍스트박스*/
+section#contentArea{width:1200px; /*padding:30px 30px 60px 30px;*/padding:30px 0px 60px 0px;}
+
+	/*타이틀*/
+	div.contentTitle{margin-bottom:30px; padding-top:30px;}
+	div.contentTitle p{font-size:32px;}
+	
+
+
+ /*정보게시판*/
+        .bg0 {background-color: #fff; padding-bottom: 100px; width: 1200px;   margin:0 auto;}  
+       
+       
+       
+       
+        .board_info_m a{
+        color: black;
+        font-size: 25px;
+        padding-left: 5px;
+
+        }
+        .board_info_m.board_info_s{
+            text-decoration:none;
+        }
+        .board_info_m a:hover{
+            color: #17b978;
+            text-decoration: none;
+            
+        }
+        
+    
+        .board_info{
+            border: 2px solid #666;
+            margin: 40px;
+            border-radius: 10px;
+            padding: 6px;
+            width: 470px;
+        }
+        .board_info:hover{color: #17b978;}
+        .board_info_hit{
+           
+            font-size: 13px;
+            line-height: 1.7;
+            float: right;
+            margin-right: 40px;
+          }
+          
+        .board_info_date{
+           
+            font-size: 12px;
+            line-height: 1.7;
+            
+            
+        }
+        	
+       	 .boardinfo_img div{width: 450px; height:250px;}
+          .boardinfo_img > div > img {width:100%; height:100%;  padding-bottom: 10px; border-bottom: 1px solid #666;}
+
+
+
+          /* 게시판 write */
+      
+
+          #wholewrite{
+            width: 1200px; height: auto;
+         
+            margin: 0 auto;
+            border: 3px solid #66BB6A;
+            border-radius: 30px;
+            box-sizing: border-box;
+        }
+         
+           
+         
+          div.writearea_md{
+           margin:60px 0 0 150px;
+           
+          }
+          div#titlearea input{
+              height: 30px;
+              width: 500px;
+              border: 1px solid #AEBD77; /* some kind of blue border */
+
+              /* other CSS styles */
+          
+              /* round the corners */
+              -webkit-border-radius: 4px;
+                 -moz-border-radius: 4px;
+                      border-radius: 4px;
+          
+          
+              /* make it glow! */
+              -webkit-box-shadow: 0px 0px 4px #AEBD77;
+                 -moz-box-shadow: 0px 0px 4px #AEBD77;
+                      box-shadow: 0px 0px 4px #AEBD77; /* some variation of blue for the shadow */
+          
+
+            
+          }
+          .contentarea {
+           
+            
+          }
+          .contentarea textarea,  .contentarea input {
+              width: 800px; height: 400px; 
+              resize: none;
+              ;         
+
+                 border: 1px solid #AEBD77; /* some kind of blue border */
+
+              /* other CSS styles */
+          
+              /* round the corners */
+              -webkit-border-radius: 4px;
+                 -moz-border-radius: 4px;
+                      border-radius: 4px;
+          
+          
+              /* make it glow! */
+              -webkit-box-shadow: 0px 0px 4px #AEBD77;
+                 -moz-box-shadow: 0px 0px 4px #AEBD77;
+                      box-shadow: 0px 0px 4px #AEBD77; /* some variation of blue for the shadow */
+          
+
+          }
+          
+          .contentarea textarea ::placeholder{
+              color: gray;
+              
+          }
+           #wholewrite label{
+            font-weight: bold;
+            font-size:  30px;
+            margin-right: 10px;
+            
+          }
+          #write_logo{
+              position: relative;
+              bottom: 600px;
+              left: 600px;
+          }
+          #write_logo img{
+              width: 250px;
+          }
+
+          #wholewrite input:focus, 
+          #wholewrite textarea:focus
+          { outline: 2px solid #AEBD77; /* some kind of blue border */
+
+            /* other CSS styles */
+        
+            /* round the corners */
+            -webkit-border-radius: 4px;
+               -moz-border-radius: 4px;
+                    border-radius: 4px;
+        
+        
+            /* make it glow! */
+            -webkit-box-shadow: 0px 0px 4px #4195fc;
+               -moz-box-shadow: 0px 0px 4px #4195fc;
+                    box-shadow: 0px 0px 4px #4195fc; /* some variation of blue for the shadow */
+        }
+        /* 버튼 css*/
+        .button-4{
+            width:140px;
+            height:50px;
+            border:2px solid #538F6A;
+            float:left;
+            text-align:center;
+            cursor:pointer;
+            position:relative;
+            box-sizing:border-box;
+            overflow:hidden;
+            margin:0 0 40px 50px;
+          }
+          .button-4 a{
+            font-family:arial;
+            font-size:16px;
+            color:black;
+            text-decoration:none;
+            line-height:50px;
+            transition:all .5s ease;
+            z-index:2;
+            position:relative;
+          }
+          .eff-4{
+            width:140px;
+            height:50px;
+            left:-140px;
+            background:#66BB6A;
+            position:absolute;
+            transition:all .5s ease;
+            z-index:1;
+          }
+          .button-4:hover .eff-4{
+            left:0;
+          }
+          .button-4:hover a{
+            color:#fff;
+          }
+          
+          .button-04_m{
+           margin: 0 30%;
+          }
+         /* #66BB6A
+          #538F6A
+          #AEBD77*/
+          /* 게시판 view*/
+
+
+          div#content_view a:hover{color:#adb5bd; text-decoration: none;}
+          div#content_view a{
+              text-decoration: none;
+              color: black;
+          }
+          div#content_view{
+              width: 1200px; height: 100%;
+              background-color: #f5f7f9;
+              
+          }
+          .content_view_top{
+            border-top: 3px    solid #666 ;
+            border-bottom: 3px solid #666;
+            overflow: hidden;            
+        }
+        #content_view_title{
+            float: left;
+            /* margin: 10px 650px 10px 90px;*/
+            margin: 10px 0;
+            margin-left: 20px;
+            font-size: 25px;
+            font-weight: 900;
+            
+        }
+        #content_view_date{
+            float: right;
+            margin-top: 17px;
+            margin-right: 80px;
+        }
+        #content_view_mid{
+            padding: 15px;
+            height: 100%;
+            font-size: 25px !important;
+            margin-left: 20px;
+            /* overflow: scroll */
+            
+        }
+        div#content_view_bottom1{
+            border-bottom: 2px solid #666;
+            border-top: 2px solid #666;
+        }
+        div#content_view_bottom2{
+            border-bottom: 2px solid #666;       
+        }
+        .coment_view_comm_view,#content_view_comm_write{
+            border-top: 2px solid #666;
+        }
+     
+        
+        #content_view_comm_write textarea{
+             margin: 10px 0;       
+             margin-left: 50px;
+             width: 900px;
+              
+        }
+        #content_view_comm_write button{
+            margin: 20px 25px 0 0 ;
+            float: right;
+            width: 200px;
+            height: 40px;
+            
+        }
+        
+        div#content_view_bottom1 label,div#content_view_bottom2 label{
+            font-size: 22px;
+            padding-left: 20px;
+            font-weight: bold;
+            margin-right: 70px;
+        }
+       
+        #content_view_prev{
+            font-size: 20px;
+            display: inline;
+    
+        }
+        
+        #content_view_next{
+            font-size: 20px;
+            display: inline;
+    
+        }
+        .coment_view_comm_view{
+            padding: 10px;
+        
+        }
+        .coment_view_comm_view .content_view_comm_top{
+            margin-left: 40px;
+            font-size: 18px;
+            
+            
+        }
+        .coment_view_comm_view .content_view_comm_top span{
+            margin-left: 40px;
+            font-size: 14px;
+        }
+        .coment_view_comm_view button{
+            width: 80px;
+            height: 30px;
+            float: right;
+            margin-right: 30px;
+        }
+        #coment_view_comm_modify{
+           display: inline; 
+           margin-left: 40px;
+           
+        }
+    .board_btn .content_btn{
+     height: 40px;
+     width: 100px; 
+    font-size: 25px;
+    margin: 20px 0px 10px 570px;
+
+    }
+       .board_btn .content_btn2{
+     height: 40px;
+     width: 100px; 
+    font-size: 25px;
+    margin: 20px 10px 10px 50px;
+    float: right; 
+    }
+    #content_btn_report{
+       height: 40px;
+     width: 140px; 
+    font-size: 20px;
+    float: right;
+    
+    }
+    #content_view_comm_textarea{
+        margin-left: 40px;
+    }
+    #content_view_comm_textarea textarea{
+        width: 900px;
+    }
+
+    .login_find_id{
+        border-radius: 100px;
+        border: 1px solid none;
+        width: 1000px;
+        height: 500px;
+        margin: 100px auto;
+        padding: 70px;
+      
+    }
+    .login_find_id_title strong{
+        font-size: 40px;
+        margin: 0 30px 0 300px;
+
+    }
+    .login_find_id_title .login_find_id_input {
+        margin-top: 50px;
+        margin-left: 100px;
+        font-size: 25px;
+    }
+    .login_find_id_title .login_find_id_input select{
+    	font-size: 25px;
+    	
+    }
+  
+    .login_find_id_title .login_find_id_input button{
+            margin: 80px 0px 0px 200px;
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            background-color: #e3fa99;
+            color: #17b978;
+            font-weight: bold;
+    }
+    .login_find_id_title .login_find_id_input select {
+        height: 45px;
+        width: 240px;
+        text-align: center;
+    }
+        .manage_btn{
+        float: right;
+    }
+    .managerbuttoncss{
+     font-size: 20px;
+        font-weight: bold;
+        background-color: #888;
+        color: #e8e8e8;
+        width: 100px;
+        height: 40px;
+    }
+    .manage_btn button{
+        margin: 20px 50px 0 0;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: #888;
+        color: #e8e8e8;
+        width: 100px;
+        height: 40px;
+    }
+    
+    .page-num {
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 440px;
+  }
+  
+  .page-num li {
+    width: 36px;
+    height: 35px;
+    padding: 0;
+  	display: inline-block;
+    padding-right: 5px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  #page_num_num{
+  text-align: center;
+  }
+  
+  .first {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_first.png) no-repeat;
+  }
+  
+  .prev {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_prev.png) no-repeat;
+  }
+  
+  .num {
+    position: relative;
+    top: -16px;
+    height: 33px !important;
+    border: 1px #989898 solid;
+  }
+  
+  .num > div {
+    position: relative;
+    top: 2px;
+  }
+  
+  .next {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_next.png) no-repeat;
+  }
+  
+  .last {
+    background: url(https://www.midashotel.co.kr/Midas_common/images/homepage/board/paging_last.png) no-repeat;
+  }
+      
+        
+          

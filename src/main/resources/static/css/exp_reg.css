@@ -1,0 +1,44 @@
+h2 {text-align: center; font-weight: 900;}
+
+.expreg_table{
+    padding-top: 50px;
+    margin: auto;
+}
+.expreg_table {
+   margin-bottom: 15px;
+}
+.expreg_table .expreg_th {
+    font-size: 20px;
+    padding-right: 50px;
+    vertical-align: top;
+}
+.expreg_table #e_name,#e_keyword{
+    width: 433px;
+}
+.expreg_table #e_details{
+    resize: none;
+}
+#e_name,#e_details,#e_startdate,#e_enddate,#e_term,#e_price,#e_keyword {
+    margin-bottom: 10px;
+}
+.btn_wrapper{
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+button {
+    font-size: 20px;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+    border: none;
+    color: white;
+    background-color: #538F6A;
+}
+button:hover {
+    background-color:#AEBD77;
+}
+button:focus{
+    outline: none;
+}

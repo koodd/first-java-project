@@ -1,0 +1,431 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hphfarm.www.mapper.MemberMapper">
+	<!-- =================================== 황선필 =================================== -->
+
+	<!-- 로그인 기능 -->
+	<select id="selectLogin" resultType="com.hphfarm.www.dto.MemberDto">
+		select * from users where u_id = #{u_id} and u_pw = #{u_pw}
+	</select>
+	
+	<!-- 	//29 회원 탈퇴를 위한 회원 정보 불러오기 기능 -->
+	<select id="deleteSelectOne" resultType="com.hphfarm.www.dto.MemberDto">
+	
+		select * from users where u_no = #{u_no}
+	
+	</select>
+	
+	<!-- resultmap setting -->
+	<resultMap type="com.hphfarm.www.dto.ProductDto" id="prdto2">
+		<result column="p_no" property="p_no" />
+		<result column="p_name" property="p_name" />
+		<result column="p_way" property="p_way" />
+		<result column="p_num" property="p_num" />
+		<result column="p_term" property="p_term" />
+		<result column="pc_no" property="pc_no" />
+		<result column="p_price" property="p_price" />
+		<result column="p_info" property="p_info" />
+		<result column="p_pic" property="p_pic" />
+		<result column="p_picd" property="p_picd" />
+		<result column="p_picd2" property="p_picd2" />
+		<result column="p_picd3" property="p_picd3" />
+		<result column="p_picd4" property="p_picd4" />
+		<result column="p_picd5" property="p_picd5" />
+	</resultMap>
+	
+	<resultMap type="com.hphfarm.www.dto.CartDto" id="ctdto">
+		<result column="ct_no" property="ct_no" />
+		<result column="u_no" property="u_no" />
+		<result column="p_no" property="p_no" />
+		<result column="ct_num" property="ct_num" />
+		<result column="ct_date" property="ct_date" />
+		<result column="ct_tp" property="ct_tp" />
+	</resultMap>
+
+	<resultMap type="com.hphfarm.www.dto.PCDto" id="pcdto">
+		<collection property="productDto" resultMap="prdto2"></collection>
+		<collection property="cartDto" resultMap="ctdto"></collection>
+	</resultMap>
+	
+	<!-- 30 -->
+	<!-- 로그인 uno 통한 정보 얻기. -->
+	<select id="selectUserOne" resultType="com.hphfarm.www.dto.MemberDto"> 
+		select * from users where u_no = #{u_no}
+	
+	</select>
+	
+	<!-- 01 -->
+	<!-- 회원 탈퇴 기능2 -->
+	<delete id="deleteUserOne">
+	
+		delete from users where u_no = #{u_no}
+	
+	</delete>
+	
+	<!-- 30 -->
+	<!-- //새로운 거래번호  -->
+	<select id="selectPy_no" resultType="int">
+	
+		select py_no_seq.nextval from dual
+	
+	</select>
+
+
+
+	<!--해당 로그인 유저의 장바구니 물품들 불러오기 날짜순으로 변경 -->
+	<select id="selectCart" resultMap="pcdto">
+		select * from cart where u_no = #{sessionuno} order by ct_no desc
+	</select>
+
+	<!-- //pclist에 물품 정보 입력할 물품 정보 불러오기 -->
+	<select id="selectProductList2" resultMap="pcdto">
+		select * from product where p_no = #{p_no}
+	</select>
+
+
+	<!--장바구니 삭제버튼 -->
+	<delete id="cartdel">
+		delete from cart where ct_no = #{ct_no}
+	</delete>
+
+	<!--장바구니 디비 입력 -->
+	<insert id="insertCartProduct">
+		<selectKey keyProperty="ct_no" resultType="int" order="BEFORE">
+			select ct_seq.nextval from dual
+		</selectKey>
+		insert into cart
+		values(#{ct_no},#{u_no},#{p_no},#{ct_num},sysdate,#{ct_tp})
+	</insert>
+
+	<!--장바구니 디비 입력 -->
+	<update id="cartupdate">
+		update cart set ct_num = #{ct_num}, ct_date = sysdate, ct_tp = #{ct_tp} where ct_no = #{ct_no}
+	</update>
+
+	<!--구매내역, 주문취소관리 -->
+	<resultMap type="com.hphfarm.www.dto.PayDto" id="pydto">
+		<result column="py_no" property="py_no" />
+		<result column="py_price" property="py_price" />
+		<result column="py_date" property="py_date" />
+		<result column="py_category" property="py_category" />
+		<result column="u_no" property="u_no" />
+		<result column="py_status" property="py_status" /><!-- 30 -->
+	</resultMap>
+	
+	<resultMap type="com.hphfarm.www.dto.PurchaseListDto" id="pldto">
+		<result column="pl_no" property="pl_no" />
+		<result column="p_no" property="p_no" />
+		<result column="pl_num" property="pl_num" />
+		<result column="pl_delivery" property="pl_delivery" />
+		<result column="pl_status" property="pl_status" />
+		<result column="py_no" property="py_no" />
+	</resultMap>
+	
+	<resultMap type="com.hphfarm.www.dto.ProductDto" id="prdto">
+		<result column="p_no" property="p_no" />
+		<result column="p_name" property="p_name" />
+		<result column="p_way" property="p_way" />
+		<result column="p_num" property="p_num" />
+		<result column="p_term" property="p_term" />
+		<result column="pc_no" property="pc_no" />
+		<result column="p_price" property="p_price" />
+		<result column="p_info" property="p_info" />
+		<result column="p_pic" property="p_pic" />
+		<result column="p_picd" property="p_picd" />
+		<result column="p_picd2" property="p_picd2" />
+		<result column="p_picd3" property="p_picd3" />
+		<result column="p_picd4" property="p_picd4" />
+		<result column="p_picd5" property="p_picd5" />
+	</resultMap>
+
+	<resultMap type="com.hphfarm.www.dto.PPPDto" id="pppdto">
+		<collection property="payDto" resultMap="pydto"></collection>
+		<collection property="purchaseListDto" resultMap="pldto"></collection>
+		<collection property="productDto" resultMap="prdto"></collection>
+	</resultMap>
+
+	<!-- 결제부분 불러오기 -->
+	<select id="selectPayList" resultMap="pppdto">
+		select * from pay where u_no = #{u_no} and py_category='kakaopay'
+	</select>
+
+	<!-- 구매내역부분 불러오기 -->
+	<select id="selectPurchaseList" resultMap="pppdto">
+		select * from purchaselist where py_no = #{py_no} order by py_no desc
+	</select>
+
+	<!-- 물품정보부분 불러오기 -->
+	<select id="selectProductList" resultMap="pppdto">
+		select * from product where p_no = #{p_no}
+	</select>
+
+	<!-- 상품 취소 실행 -->
+	<insert id="insertCancel1">
+		<selectKey keyProperty="c_no" resultType="int" order="BEFORE">
+			select c_seq.nextval from dual
+		</selectKey>
+		insert into cancel
+		values(#{c_no},#{c_reason},#{c_pic},sysdate,'N',sysdate,1,#{py_no})
+	</insert>
+
+	<!-- 상품 반품 실행 -->
+	<insert id="insertCancel2">
+		<selectKey keyProperty="c_no" resultType="int" order="BEFORE">
+			select c_seq.nextval from dual
+		</selectKey>
+		insert into cancel
+		values(#{c_no},#{c_reason},#{c_pic},sysdate,'N',sysdate,2,#{py_no})
+	</insert>
+
+	<!-- 상품 교환 실행 -->
+	<insert id="insertCancel3">
+		<selectKey keyProperty="c_no" resultType="int" order="BEFORE">
+			select c_seq.nextval from dual
+		</selectKey>
+		insert into cancel
+		values(#{c_no},#{c_reason},#{c_pic},sysdate,'N',sysdate,3,#{py_no})
+	</insert>
+
+	<!-- 주문 취소,반품,교환 신청후 구매내역 상태 처리중으로 전환 -->
+	<update id="updatePurchaseListPlStatus">
+		update purchaselist set pl_status = 4 where py_no = #{py_no}
+	</update>
+	
+	<!-- 30 //구매 성공시, 구매내역으로 인서트 -->
+	<insert id="insertPurchaseList">
+	
+		insert into purchaselist values(pl_seq.nextval,#{p_no},#{pl_num},#{pl_delivery},1,#{py_no})
+	
+	</insert>
+	
+		<!-- 01 --><!-- 구매 성공시 상품 목록에서 상품 수량 빼기 -->
+	<delete id="minusProduct">
+		
+		update product set p_num = p_num-#{pl_num} where p_no = #{p_no}
+	
+	</delete>
+	
+	
+	<!-- 30 --><!-- //결제내역에 인서트 -->
+	<insert id="insertPay">
+	
+		insert into pay values(#{py_no},#{py_price},sysdate,'kakaopay',#{u_no},'true')
+	
+	</insert>
+	
+	<!-- 30 --><!-- 구매성공후, 장바구니 삭제 -->
+	<delete id="AfterBuySuccessDeleteCart">
+		delete from cart where u_no = #{u_no}
+	
+	</delete>
+	
+	<!-- =================================== 한희태 =================================== -->
+
+	<!-- 마이페이지 메인 회원정보 -->
+	<select id="selectMyInfo"
+		resultType="com.hphfarm.www.dto.MemberDto">
+		select * from users where u_no = #{u_no, jdbcType=VARCHAR}
+	</select>
+
+	<!-- 마이페이지 농장 예약 내역 -->
+	<select id="myReserList"
+		resultType="com.hphfarm.www.dto.FarmDto">
+		select r.fr_name, e.frs_resdate, e.frs_startdate,
+		r.fr_addr,r.fr_thumb, u.u_phone, e.frs_account, p.py_price, p.py_no, e.frs_status
+		from users u, farmreg r, farmres e, pay p
+		where u.u_no=r.u_no and r.fr_no=e.fr_no and
+		p.py_no=e.py_no and
+		p.u_no=#{u_no}
+	</select>
+
+	<!-- 마이페이지 농장 수정 페이지 -->
+	<select id="myFarmUpdet"
+		resultType="com.hphfarm.www.dto.FarmDto">
+		select * from farmreg where u_no=#{uno}
+	</select>
+
+	<!-- 마이페이지 농장 수정 신청 -->
+	<update id="farmUpdate">
+		update farmreg set fr_addr=#{fr_addr},
+		fr_name=#{fr_name}, fr_area=#{fr_area},
+		fr_block=#{fr_block},
+		fr_land=#{fr_land}, fr_certi=#{fr_certi}, fr_appr='false',
+		fr_startdate=#{fr_startdate}, fr_enddate=#{fr_enddate},
+		fr_view=#{fr_view},
+		fr_view2=#{fr_view2},fr_view3=#{fr_view3},fr_view4=#{fr_view4},
+		fr_price=#{fr_price},
+		fr_unique=#{fr_unique}, fr_noplant=#{fr_noplant},
+		fr_service=#{fr_service},fr_thumb=#{fr_thumb}
+		where fr_no=#{fr_no}
+	</update>
+	
+	<!-- 농장 예약 회원 정보 -->
+	<select id="userInfoReser" resultType="com.hphfarm.www.dto.MemberDto">
+		select * from users where u_no=#{py_no}
+	</select>
+	
+	<!-- 농장 예약 취소 예약 데이터 삭제 -->
+	<update id="res_farm_cancel">
+		update farmres set frs_status='false' where py_no=#{py_no}
+	</update>
+		
+	<!-- 농장 예약 취소 결제 데이터 삭제 -->
+	<update id="farm_pay_cancel">
+		update pay set py_status='false' where py_no=#{py_no}
+	</update>
+	
+	<!-- 농장번호 찾기 -->
+	<select id="findMyFarm" resultType="int">
+		select fr_no from farmreg where u_no=#{u_no}
+	</select>
+	
+	<select id="finishFarmReser" resultType="int">
+		select nvl(REGEXP_COUNT((select WM_CONCAT(frs_account) frs_account 
+		from farmres where fr_no=#{fr_no} and frs_status='true' group by fr_no having fr_no=#{fr_no}),',')+1,0) 
+		from dual
+	</select>
+	
+	<!-- 1:1문의 보내기 -->
+	<insert id="insert_inquiry">
+		insert into inquiry values(ci_no_seq.nextval, #{ci_title}, #{ci_content}, sysdate, #{u_no}, 'true')
+	</insert>
+	
+	<!-- =================================== 최건호 =================================== -->
+	<!-- 유저회원회원가입하기 -->
+	<insert id="insertUserReg">
+		insert into users values(
+		u_no_seq.nextval,
+		#{u_id},
+		#{u_pw},
+		#{u_name},
+		#{u_nickname},
+		#{u_phone},
+		#{u_regno},
+		#{u_email},
+		#{u_addr},
+		#{u_infoway, jdbcType=VARCHAR},
+		#{u_account, jdbcType=VARCHAR},
+		#{u_bank, jdbcType=VARCHAR},
+		#{u_accountno, jdbcType=VARCHAR},
+		1
+		)
+	</insert>
+	
+	<!-- 농장주회원 회원가입하기 -->
+	<insert id="insertFarmerReg">
+		insert into users values(
+		u_no_seq.nextval,
+		#{u_id},
+		#{u_pw},
+		#{u_name},
+		#{u_nickname},
+		#{u_phone},
+		#{u_regno},
+		#{u_email},
+		#{u_addr},
+		#{u_infoway, jdbcType=VARCHAR},
+		#{u_account, jdbcType=VARCHAR},
+		#{u_bank, jdbcType=VARCHAR},
+		#{u_accountno, jdbcType=VARCHAR},
+		2
+		)
+	</insert>
+
+	<!-- 아이디 중복체크 -->
+	<select id="idChk" resultType="int">
+		select count(*) from users where
+		u_id=#{u_id}
+	</select>
+	
+	<!-- 닉네임 중복체크 -->
+	<select id="nicChk" resultType="int">
+		select count(*) from users where
+		u_nickname=#{u_nickname}
+	</select>
+	
+	<!-- 회원정보수정 닉네임 중복체크 -->
+	<select id="nicChk2" resultType="int">
+		select count(*) from users where
+		u_nickname=#{u_nickname} and u_no!=#{u_no}
+	</select>
+	
+	<!-- 마이페이지 : 농장주 회원 체험프로그램 수정하기 위한 게시글 가져오기 -->
+	<select id="selectRegModifyBoardOne" resultType="com.hphfarm.www.dto.ExpDto">
+		select * from exp where u_no=#{u_no}
+	</select>
+	
+	<!-- 마이페이지 : 농장주 회원 체험프로그램 수정하기 -->
+	<update id="updateExp_modify">
+		update exp set
+		e_name=#{e_name},e_details=#{e_details},e_startdate=#{e_startdate},e_enddate=#{e_enddate},e_term=#{e_term},
+		e_price=#{e_price},e_keyword=#{e_keyword},e_thumb=#{e_thumb},e_appr='false'
+		where e_no=#{e_no}
+	</update>
+	
+	<!-- 마이페이지 : 나의 회원 정보 수정하기 -->
+	<update id="updateMyInfo">
+		update users set
+		u_pw=#{u_pw},u_nickname=#{u_nickname},u_phone=#{u_phone},u_infoway=#{u_infoway, jdbcType=VARCHAR},u_addr=#{u_addr},u_bank=#{u_bank,
+		jdbcType=VARCHAR},u_account=#{u_account,
+		jdbcType=VARCHAR},u_accountno=#{u_accountno, jdbcType=VARCHAR}
+		where
+		u_no=#{u_no}
+	</update>
+	
+	<!-- 마이페이지 : 마이페이지 들어갈때 비밀번호 한번더 확인하기 -->
+	<select id="checkPw" resultType="com.hphfarm.www.dto.MemberDto">
+		select * from users where u_pw = #{u_pw}
+	</select>
+
+	<!-- 마이페이지 : 나(유저)의 체험 신청 내역 보기 -->
+	<select id="myBookList" resultType="com.hphfarm.www.dto.ExpDto">
+		select e.e_no,s.er_people,e.e_name,p.py_price,e.e_term,u.u_phone,s.er_resdate,s.er_visitdate
+		from users u,expres s,exp e,pay p
+		where u.u_no=e.u_no
+		and s.e_no=e.e_no
+		and p.py_no=s.py_no
+		and s.u_no=#{u_no} 
+		and p.py_status='true'
+	</select>
+	
+	<!-- 마이페이지 : (농장주)가 보는 유저의 신청내역 보기 -->	
+	<select id="myExpBookList" resultType="com.hphfarm.www.dto.ExpDto">
+		select s.er_no,u.u_name,u.u_phone,s.er_people,p.py_price,s.er_visitdate,s.er_resdate
+		from users u,expres s,pay p,exp e
+		where u.u_no=s.u_no
+		and p.u_no=u.u_no
+		and e.e_no=s.e_no
+		and e.e_no=#{e_no}
+		and p.py_status='true'
+		order by er_resdate asc
+	</select>
+	
+	<!-- 마이페이지 : (농장주)가 보는 유저의 신청내역 보기 에 필요한 e_no 뽑기 -->
+	<select id="findMyEno" resultType="int">
+		select e_no from exp where u_no=#{u_no}
+	</select>
+	
+	<!-- 마이페이지 : (농장주)가 보는 유저의 신청내역 보기 에서 총 결제 합 뽑기 -->
+	<select id="selectMyReceiveMoney" resultType="com.hphfarm.www.dto.ExpDto">
+		select sum(x.e_price) "totalPrice",(select count(*) from exp where u_no=#{u_no}) "reserNumber" 
+		from expres e,pay p,exp x
+	      where e.u_no=p.u_no
+	      and e.e_no=x.e_no
+	      and x.u_no=#{u_no}
+	      and p.py_status='true'
+	      group by x.e_price
+	</select>
+	<!-- 마이페이지 : 마이페이지에서 나의 체험 예약 취소하기 -->
+	<update id="updateCancelExpReser">
+		merge into pay p 
+		using expres e 
+		on (p.py_no=e.py_no) 
+		when matched 
+		then 
+		update set p.py_status='false' where e.e_no=#{eno} and p.u_no=#{uno}
+	</update>
+ 	
+</mapper>	
+	

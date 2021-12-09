@@ -1,0 +1,213 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+*{
+    font-family: 'Pretendard-Regular';
+}
+ul, li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.f_regi {
+    width: 1200px;
+    
+    border-top: 3px solid black;
+    margin: 0 auto;
+}
+.f_regi h2{
+    font-size: 36px;
+    margin: 0 auto;
+    width: 800px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.f_regi p,td{
+    font-size: 20px;
+    font-weight: 900;
+}
+.wrapF_regi {
+    
+    width: 500px;
+    margin: 0 auto;
+}
+.regiTable{
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+.regiTable input[type=text], .regiTable input[type=date]{
+    height: 20px;
+    margin-left: 80px;
+}
+.regiTable button{
+    font-size: 15px;
+    background-color: #539956;
+    line-height: 14px;
+    margin-left: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 6px;
+    padding: 5px;
+}
+.farmdont label{
+    font-size: 20px;
+}
+.dontlist, .canService{
+    margin: 10px;
+    height: 20px;
+    width: 20px;
+}
+#farmSpe{
+    resize: none;
+    font-size: 20px; 
+    width: 100%; 
+    height: 100px; 
+    padding: 10px; 
+    margin-bottom: 30px;
+}
+.f_regi_certi_btn, .f_regi_main_btn {
+    padding: 6px 25px;
+    background-color: #539956;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+.addImgWrap ul{
+    overflow: hidden;
+    text-align: center;
+}
+.addImg{
+    width: 23%;
+    margin:0 5px;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    height: 200px;
+
+}
+.addImgsub1,.addImgsub2,.addImgsub3,.addImgsub4{
+    width: 100%;
+    height: 113px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: flex;
+    text-align: center;
+}
+.addImgsub1 img,
+.addImgsub2 img,
+.addImgsub3 img,
+.addImgsub4 img{
+    width: 100%;
+    height: 100%;
+}
+.addSubFile{
+    margin-top: 40px;
+}
+.addSubFile label{
+    padding: 6px 25px;
+    background-color: #539956;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.regibtn{
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+#farmRegiBtn, #farmCancBtn{
+    font-size: 40px;
+    background-color: #66BB6A;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+.fileUploadBtn{
+    width: 23%;
+    margin:0 5px;
+}
+#farmRegiBtn:hover, #farmCancBtn:hover{
+	cursor:pointer;
+}
+
+/* 예약 내역 CSS */
+
+.f_res_list{
+    width: 1200px;
+    margin: 0 auto;
+}
+.f_res_ll{
+    width: 1000px;
+    border: 1px solid black;
+    padding: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.f_res_img{
+    width:300px;
+    float: left;
+}
+.f_res_img img{
+    width:100%;
+    height:260px;
+    
+}
+.f_res_info{
+    margin-left: 20px;
+    float: left;
+    width: 500px;
+}
+.f_res_info h3{
+    font-size: 20px;
+    color: #538F6A;
+}
+.f_res_info h4{
+    margin-top: 0;
+    margin-bottom: 19px;
+}
+.res_info_data{
+    font-weight: 200;
+}
+.f_res_can{
+    width:150px;
+    float: left;
+    border-left: 1px solid black;
+    padding-left: 5px;
+}
+.yogum{
+    font-size: 23px;
+    margin-top: 80px;
+    text-align: center;
+}
+.f_res_can p{
+    overflow: hidden;
+    text-align: left;
+}
+.f_res_can .won{
+    float: right;
+}
+#cancelBtn{
+    float:right;
+    padding: 10px 51px;
+    margin-top: 40px;
+    background-color: #538F6A;
+    color: white;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+#cancelBtn2{
+    float:right;
+    padding: 10px 3px;
+    margin-top: 40px;
+    background-color: #538F6A;
+    color: white;
+    border: none;
+    font-size: 17px;
+    cursor: default;
+}

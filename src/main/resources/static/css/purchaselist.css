@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+section{width: 1200px; margin: 0 auto; height: 100%;}
+
+#request1{background-color: #66BB6A; border-color: #538F6A;}
+#request2{font-size: 20px; color: white;}
+#continue1{background-color: #66BB6A; border-color: #538F6A;}
+#continue2{font-size: 30px; color: white;}
+#remove1{background-color: #66BB6A; border-color: #538F6A;}
+#minus1{border-color: #538F6A;}
+#minus1:hover{background-color: #538F6A;}
+#plus1{border-color: #538F6A;}
+#plus1:hover{background-color: #538F6A;}
+#amount1{margin: 0 auto; margin-top: 75px;}
+#checkout1{background-color: #66BB6A; border-color: #538F6A;}
+#checkout2{font-size: 30px; color: white;}
+#height1{height: 100%; margin-top: 35px;}
+#height2{height: 200px; margin: 0 auto; line-height: 200px;}
+#height3{height: 263px; margin: 0 auto; line-height: 263px;}
+#title1{font-size: 40px;}
+#title2{font-size: 20px;}
+#font1{font-size: 20px;}
+.fontsize1{font-size: 20px;}
+#totalprice1{font-size: 30px;}
+#section1{margin-left: 300px;}
+
+
+
+
+

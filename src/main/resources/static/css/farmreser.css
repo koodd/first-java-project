@@ -1,0 +1,111 @@
+.f_res{
+    width: 1200px;
+    border-top: 3px solid black;
+    margin: 0 auto;
+}
+.f_res h2{
+    font-size: 36px;
+    margin: 0 auto;
+    width: 800px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.wrapF_res h3{
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-left: 137px;
+}
+table{
+    margin: 0 auto;
+    border-bottom: 1px solid #666;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+table td{
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    border-spacing: 0px;
+    padding: 0px;
+    text-align: center;
+}
+table th{
+    font-size: 20px;
+    width: 40px;
+}
+.wrapF_res input[type="checkbox"]+label{
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    cursor: pointer;
+    margin: none;
+}
+.wrapF_res input[type="checkbox"]:checked+label{
+    background-color: #66BB6A;
+}
+.wrapF_res input[type="checkbox"]{
+    display: none;
+}
+.wrapF_res input[type="checkbox"]:disabled+label{
+    background-color: #333;
+    cursor: auto;
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+*{font-family: 'Pretendard-Regular';}
+.f_res_detail, .f_res_pay{
+    margin: 0 auto;
+    width: 900px;
+}
+.f_res_detail h3{
+    font-size: 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    width: 150px;
+}
+.f_res_detail p, .f_res_detail input[type="date"], .f_res_detail textarea{
+    font-size: 18px;
+}
+.f_res_detail textarea{
+    resize: none;
+    font-size: 20px; 
+    width: 878px; 
+    height: 100px; 
+    padding: 10px; 
+    margin-bottom: 30px;
+}
+
+.f_res_pay{
+    border-top: 2px solid black;
+    overflow: hidden;
+}
+.f_res_pay h3{
+    font-size: 25px;
+    width: 50%;
+    color: #66BB6A;
+}
+.pay_left{
+    float: left;
+}
+.pay_right{
+    float: right;
+    text-align: right;
+}
+.pay_bottom span, .pay_bottom select{
+    font-size: 20px;
+}
+#reserBtn{
+    padding: 15px 70px;
+    font-size: 25px;
+    background-color: #66BB6A;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}

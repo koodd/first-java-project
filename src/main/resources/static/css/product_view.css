@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+section{width: 1200px; margin: 0 auto; height: 100%;}
+
+#amount{font-size: 30px; width: 120px; text-align: center;}
+#buy1{float: right; background-color: #66BB6A; border-color: #538F6A; height: 60px; width: 150px; line-height: 40px;}
+#buy2{font-size: 30px; color: white;}
+#cart1{background-color: #66BB6A; border-color: #538F6A; height: 60px; width: 150px; line-height: 40px;}
+#cart2{font-size: 30px; color: white;}
+#button1{width: 320px;}
+#price1{color: black; font-size: 30px;}
+#pinfo1{font-size: 20px;}
+#minus1{border-color: #538F6A;}
+#minus1:hover{background-color: #538F6A;}
+#plus1{border-color: #538F6A;}
+#plus1:hover{background-color: #538F6A;}
+#viewimage1{width: 400px; height: 400px;}
+#viewimage2{width: 300px; text-align: center; height: 400px; line-height: 400px;}
+#pinfo1{width: 900px; margin: 0 auto;}
+#reviewwrite1{width: 900px; margin: 0 auto;}
+#reviewreg1{height: 80px; width: 100px; float: right; font-size: 30px;
+background-color: #66BB6A; border-color: #538F6A; line-height: 55px;}
+#reviewreg2{font-size: 30px; color: white;}
+#reviewlist1{width: 900px; margin: 0 auto;}
+#date1{height: 30px; width: 120px; float: right; font-size: 20px;}
+#star1{height: 30px; width: 120px; float: right; font-size: 20px;}
+#reviewcontent1{width: 600px;}
+#totalpnum1{float: right; width: 200px; font-size: 20px;}
+#nopics{width: 300px; margin: 0 auto; margin-top: 50px;}/* 29 */
+#productbox{width: 900px; margin: 0 auto;}/* 01 */
+#imagebox{width: 800px; margin: 0 auto; text-align: center;}/* 01 */
+#textbox{width: 600px; margin: 0 auto; text-align: center;}/* 29 */
+
+.img-fluid{width: 750px; }/* 01 */
